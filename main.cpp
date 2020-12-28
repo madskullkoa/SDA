@@ -70,6 +70,9 @@ void triAlpha(Item& entre, Liste& l, Joueurs& j) {
 		inserer(l, position, test); //c'est pas terminé mais askip c chaud
 }
 
+/**
+ * @brief bah c'est le main quoi...
+ */
 int main() {
 	Item entree;
 	Joueurs j;
