@@ -45,9 +45,9 @@ void supprimer(Liste l) {
 void triAlpha(Item& entre, Liste& l, Joueurs& j) {
 	//assert(triUnique(entre, l));		//C'est très bien ca bg        merci ^^
 	//le tri unique va servire a rien parce que avec strcmp on va comparer et si ça vaut 0 on sauvegarde pas, t'as capté le bail ?
-	Item test;
+	//Item test;
 	int position = 0;
-	strcpy(test,entre);
+	//strcpy(test,entre);
 	// if (l.nb == 0) {
 	// 	for (int j = 0; j < 1; j++) {
 	// 		if (strcmp(entre, l.c.tab[j])>0) { // Ne sont pas triés (Si la valeur est négative le premier mot est le plus proche de "a" ) ICI IL VA RENTRER DANS LE if
@@ -64,21 +64,18 @@ void triAlpha(Item& entre, Liste& l, Joueurs& j) {
 		for (int i = 0; i < l.nb; i++) {
 			for (int j = 0; j < i - 1; j++) {
 				if (strcmp(entre, l.c.tab[j])<0) {
-					cout << "ok" << endl;
-					//position--;
-
+					cout << "ok" << endl;					
 				}else if(strcmp(entre, l.c.tab[j])>0)
 				{
 					cout << "pas trié" << endl;	
 				}else if (strcmp(entre, l.c.tab[j]))
 				{
-					cout << "identique" << endl;	//test123
+					cout << "identique" << endl;
 				}
-				
-				
 			}
 		}
-		inserer(l, position, test); //c'est pas terminé mais askip c chaud test 
+		inserer(l, position, entre); //c'est pas terminé mais askip c chaud
+		
 }
 
 /**
@@ -87,9 +84,9 @@ void triAlpha(Item& entre, Liste& l, Joueurs& j) {
 int main() {
 	Item entree;
 	Joueurs j;
-	Liste l;
+	
 	initialisation(j); //initialiser le conteneur joueurs
-	initialiser(l, 20, 2); //initialiser la liste
+	initialiser(j.listeDesMots, 20, 2); //initialiser la liste
 	unsigned int cpt = 0;
 	cout << "Wsh manoel\n";
 
@@ -98,7 +95,7 @@ int main() {
 		if ((strcmp(entree, "*") == 0)) {
 			break;
 		}
-		triAlpha(entree,l,j);		//enregistrement_des_mots(entree, cpt, j);
+		triAlpha(entree, j.listeDesMots,j);		//enregistrement_des_mots(entree, cpt, j);
 		//ici on trie les mots avant de les ecrire dans la liste
 		calcul_de_points(j);
 		cpt++;
