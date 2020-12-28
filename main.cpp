@@ -43,13 +43,14 @@ void supprimer(Liste l) {
  * @param[in] j La structure Joueurs
  */
 void triAlpha(Item& entre, Liste& l, Joueurs& j) {
-	assert(triUnique(entre, l));		//C'est très bien ca bg
+	//assert(triUnique(entre, l));		//C'est très bien ca bg        merci ^^
+	//le tri unique va servire a rien parce que avec strcmp on va comparer et si ça vaut 0 on sauvegarde pas, t'as capté le bail ?
 	Item test;
 	int position = 0;
 	strcpy(test,entre);
 	if (l.nb == 0) {
 		for (int j = 0; j < 1; j++) {
-			if (strcmp("b","a")>0) { // Ne sont pas triés (Si la valeur est négative le premier mot est le plus proche de "a" ) ICI IL VA RENTRER DANS LE if
+			if (strcmp(entre, l.c.tab[j])>0) { // Ne sont pas triés (Si la valeur est négative le premier mot est le plus proche de "a" ) ICI IL VA RENTRER DANS LE if
 				/*
 				strcmp("BETA", "ALPHA") --> return une valeur plus grande que 0
 				the first character that does not match has a lower value in ptr1 than in ptr2
