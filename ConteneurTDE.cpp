@@ -16,7 +16,7 @@ void initialiser(ConteneurTDE& c, unsigned int capa, unsigned int p) {
 	assert((capa > 0) && (p > 0));
 	c.capacite = capa;
 	c.pasExtension = p;
-	c.tab = new Item[capa];
+	c.tab = new Mot[30][30];
 }
 
 void detruire(ConteneurTDE& c) {
