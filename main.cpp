@@ -72,13 +72,13 @@ void triAlpha(Item& entre, Liste& l, Joueurs& j) {
 					cout << "pas trié" << endl;	
 				}else if (strcmp(entre, l.c.tab[j]))
 				{
-					cout << "identique" << endl;	
+					cout << "identique" << endl;	//test123
 				}
 				
 				
 			}
 		}
-		inserer(l, position, test); //c'est pas terminé mais askip c chaud
+		inserer(l, position, test); //c'est pas terminé mais askip c chaud test 
 }
 
 /**
