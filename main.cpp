@@ -19,8 +19,8 @@ bool triUnique(Item entre, Liste l) {
 	bool Unique = 1;
 	for (int i = 0; i <= taille; i++) {
 		if (strcmp(entre, l.c.tab[i]) == 0) {
-			Unique = 0; //test replit
-			return Unique; //test github
+			Unique = 0;
+			return Unique;
 		}	 
 	}
 	return Unique;
@@ -49,7 +49,11 @@ void triAlpha(Item& entre, Liste& l, Joueurs& j) {
 	strcpy(test,entre);
 	if (l.nb == 0) {
 		for (int j = 0; j < 1; j++) {
-			if (strcmp("b","a")==1) { // Ne sont pas triés (Si la valeur est négative le premier mot est le plus proche de "a" )
+			if (strcmp("b","a")>0) { // Ne sont pas triés (Si la valeur est négative le premier mot est le plus proche de "a" ) ICI IL VA RENTRER DANS LE if
+				/*
+				strcmp("BETA", "ALPHA") --> return une valeur plus grande que 0
+				the first character that does not match has a lower value in ptr1 than in ptr2
+				*/
 				position++;
 			}
 		}
