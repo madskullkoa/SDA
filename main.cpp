@@ -19,7 +19,7 @@ bool triUnique(Item entre, Liste l) {
 	bool Unique = 1;
 	for (int i = 0; i <= taille; i++) {
 		if (strcmp(entre, l.c.tab[i]) == 0) {
-			Unique = 0;
+			Unique = 0; //test replit
 			return Unique; //test github
 		}	 
 	}
