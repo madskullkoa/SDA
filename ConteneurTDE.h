@@ -1,0 +1,52 @@
+#ifndef _CONTENEUR_TDE_
+#define _CONTENEUR_TDE_
+
+/**
+ * @file ConteneurTDE.h
+ * @brief Composant d'un conteneur d'items de capacité extensible.
+ */
+
+#include "Liste.h"
+#include "ConteneurTDE.h"
+#include "points.h"
+#include "Structs.h"
+
+
+
+/**
+ * @brief Initialise un conteneur d'items.
+ * Allocation en mémoire dynamique du conteneur d'items
+ * de capacité (capa) extensible par pas d'extension (p).
+ * @see detruire, pour sa désallocation en fin d'utilisation.
+ * @param[out] c Le conteneur d'items.
+ * @param [in] capa Capacité du conteneur.
+ * @param [in] p Pas d'extension de capacité.
+ * @pre capa > 0 et p > 0.
+ */
+void initialiser(ConteneurTDE& c, unsigned int capa, unsigned int p);
+
+/**
+ * @brief Désalloue un conteneur d'items en mémoire dynamique.
+ * @see initialiser.
+ * @param[in,out] c Le conteneur d'items.
+ */
+void detruire(ConteneurTDE& c);
+
+/**
+ * @brief Lecture d'un item d'un conteneur d'items.
+ * @param[in] c Le conteneur d'items.
+ * @param[in] i La position de l'item dans le conteneur.
+ * @return l'adresse de l'item à l'indice i
+ * @pre i < c.capacite
+ */
+Item* lire(const ConteneurTDE& c, unsigned int i);
+
+/**
+ * @brief Ecrire un item dans un conteneur d'items.
+ * @param[in,out] c Le conteneur d'items.
+ * @param[in] i La position où ajouter/modifier l'item.
+ * @param[in] it L'item à écrire.
+ */
+void ecrire(ConteneurTDE& c, unsigned int i, const Item& it);
+
+#endif
