@@ -48,23 +48,34 @@ void triAlpha(Item& entre, Liste& l, Joueurs& j) {
 	Item test;
 	int position = 0;
 	strcpy(test,entre);
-	if (l.nb == 0) {
-		for (int j = 0; j < 1; j++) {
-			if (strcmp(entre, l.c.tab[j])>0) { // Ne sont pas triés (Si la valeur est négative le premier mot est le plus proche de "a" ) ICI IL VA RENTRER DANS LE if
-				/*
-				strcmp("BETA", "ALPHA") --> return une valeur plus grande que 0
-				the first character that does not match has a lower value in ptr1 than in ptr2
-				*/
-				position++;
-			}
-		}
-	}
+	// if (l.nb == 0) {
+	// 	for (int j = 0; j < 1; j++) {
+	// 		if (strcmp(entre, l.c.tab[j])>0) { // Ne sont pas triés (Si la valeur est négative le premier mot est le plus proche de "a" ) ICI IL VA RENTRER DANS LE if
+	// 			/*
+	// 			strcmp("BETA", "ALPHA") --> return une valeur plus grande que 0
+	// 			the first character that does not match has a lower value in ptr1 than in ptr2
+	// 			*/
+	// 		cout << "pas trié" << endl;
+	// 			//position++;
+	// 		}
+	// 	}
+	// }
+		
 		for (int i = 0; i < l.nb; i++) {
 			for (int j = 0; j < i - 1; j++) {
-				if (test[j] < *l.c.tab[j]) {
-					position--;
+				if (strcmp(entre, l.c.tab[j])<0) {
+					cout << "ok" << endl;
+					//position--;
 
+				}else if(strcmp(entre, l.c.tab[j])>0)
+				{
+					cout << "pas trié" << endl;	
+				}else if (strcmp(entre, l.c.tab[j]))
+				{
+					cout << "identique" << endl;	
 				}
+				
+				
 			}
 		}
 		inserer(l, position, test); //c'est pas terminé mais askip c chaud
