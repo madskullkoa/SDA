@@ -19,9 +19,13 @@ using namespace std;
  * @brief enleves les doublons
  * @param[in] c le conteneur des mots
  */
-void triUnique(ConteneurTDE& c) {
+void triUnique(ConteneurTDE& c,Joueurs j ) {
 
-
+for(int i=0;i<j.nbdemot;++i){
+  if(strcmp(c.tab[j], c.tab[j+1])==0){
+    delete[] c.tab[j];
+  }
+}
 }
 
 /*bool triUnique(Item entre, Liste l) {
@@ -98,6 +102,7 @@ int main() {
 
 	cout << "Affichage des mots triés :" << endl;
 	triAlpha(j.conteneurDesMots, j);
+  triUnique(j.conteneurDesMots,j);
 	for (int i = 0; i < j.nbdemot; i++) {
 		cout << j.conteneurDesMots.tab[i] << endl;
 	}

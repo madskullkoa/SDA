@@ -1,10 +1,11 @@
 /**
  * @file ConteneurTDE.cpp
- * @brief Composant de conteneur d'items de capacité extensible
+ * @brief Composant de conteneur d'items de capacitï¿½ extensible
  */
 
 #include <iostream>
 #include <cassert>
+#include <cstring>
 using namespace std;
 
 #include "Liste.h"
@@ -34,10 +35,10 @@ void ecrire(ConteneurTDE& c, unsigned int i, const Item& it) {
 		unsigned int newTaille = (i + 1) * c.pasExtension;
 		Item* newT = new Item[newTaille];
 		for (unsigned int i = 0; i < c.capacite; ++i)
-			strcpy_s(newT[i], c.tab[i]);
+			strcpy(newT[i], c.tab[i]);
 		delete[] c.tab;
 		c.tab = newT;
 		c.capacite = newTaille;
 	}
-	strcpy_s(c.tab[i], it);
+	strcpy(c.tab[i], it);
 }
