@@ -51,7 +51,7 @@ void calcul_de_points(Joueurs& j) {
 		return;
 	else {
 		for (int i = 0; i < j.nbdemot; i++) { 
-			int taille_du_mot = strlen(*lire(j.listeDesMots, i));
+			int taille_du_mot = strlen(j.conteneurDesMots.tab[i]);
 
 
 			if (taille_du_mot > 2) { //quand c'est supereiur a 1 ça vaut 1 point. quand c'est > 4 
@@ -61,12 +61,10 @@ void calcul_de_points(Joueurs& j) {
 				points++;
 			}
 			if (taille_du_mot > 5) {
-
 				points++;
 			}
 			if (taille_du_mot > 6) {
 				points = points + 2;
-
 			}
 			if (taille_du_mot >= 8) {
 				points = +6;

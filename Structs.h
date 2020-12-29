@@ -6,6 +6,8 @@ typedef struct {
 	unsigned int pasExtension;
 	/// Conteneur alloué en mémoire dynamique.
 	Mot* tab;
+	/// Capacité réelle de mots
+	unsigned int nbMots;
 }ConteneurTDE;
 
 typedef struct {
