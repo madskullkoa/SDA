@@ -20,19 +20,13 @@ using namespace std;
  * @brief enleves les doublons
  * @param[in] c le conteneur des mots
  */
-void triUnique(ConteneurTDE& c, Joueurs j) {
-	for (int k = 0; k < j.nbdemot; k++) {
+void triUnique(ConteneurTDE& c, Joueurs j, Mot entree, int cpt) {
 		for (int i = 0; i < j.nbdemot; ++i) {
-			if (strcmp(c.tab[i], c.tab[i + 1]) == 0) {
-				strcpy(c.tab[i + 1], c.tab[i + 2]);
-				j.nbdemot--;
+			if (strcmp(entree, c.tab[i]) == 0) {
+				cout << "Votre mot existe deja dans la base" << endl;
+			} else {
+				ecrire(j.conteneurDesMots, cpt, entree);
 			}
-			/*if (strcmp(c.tab[i-1], c.tab[i]) == 0) {
-			strcpy(c.tab[i], c.tab[i+1]);
-	  j.nbdemot--;
-		}*/
-		}
-	}
 }
 
 /*bool triUnique(Item entre, Liste l) {
@@ -97,7 +91,8 @@ int main() {
 			break;
 		}
 		j.nbdemot++;
-		ecrire(j.conteneurDesMots, cpt, entree);
+		//ecrire(j.conteneurDesMots, cpt, entree);
+    triUnique(j.conteneurDesMots,j, entree,cpt);
 		calcul_de_points(j);
 		cpt++;
 	} while (true);
