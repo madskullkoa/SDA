@@ -14,7 +14,17 @@
 #include "points.h"
 using namespace std;
 
-bool triUnique(Item entre, Liste l) {
+
+/**
+ * @brief enleves les doublons
+ * @param[in] c le conteneur des mots
+ */
+void triUnique(ConteneurTDE& c) {
+
+
+}
+
+/*bool triUnique(Item entre, Liste l) {
 	int taille = longueur(l);
 	bool Unique = 1;
 	for (int i = 0; i <= taille; i++) {
@@ -24,16 +34,7 @@ bool triUnique(Item entre, Liste l) {
 		}
 	}
 	return Unique;
-}
-
-/**
- * @brief Supprimer les elements en double de la liste
- * @param[in] l La liste.
- */
-void supprimer(Liste l) {
-	//pour supprimer l'element, il faut un tableau des indices ou les mots sont en double. ensuite on utilise la fonction supprimer du prof pour supprimer l'element donné par le tableau
-
-}
+}*/
 
 
 /**
@@ -60,12 +61,10 @@ void triAlpha(ConteneurTDE& c, Joueurs& jr) {
 			}
 			else if (strcmp(c.tab[j], c.tab[j+1]) == 0)
 			{
-				//cout << "identique" << endl;
+				
 			}
 		}
 	}
-
-	//ecrire(c, jr.nbdemot, entre);
 
 }
 
