@@ -116,12 +116,53 @@ int main() {
 	cout << "joueur 1 :" << endl;
 	cout << j[0].conteneurDesMots.tab[0] << endl;
 	cout << j[0].conteneurDesMots.tab[1] << endl;
-	cout << j[0].conteneurDesMots.tab[2] << endl;			    
+	cout << j[0].conteneurDesMots.tab[2] << endl;
+	cout << j[0].conteneurDesMots.tab[3] << endl;
+	cout << j[0].conteneurDesMots.tab[4] << endl;
+	cout << j[0].conteneurDesMots.tab[5] << endl;
+	cout << j[0].conteneurDesMots.tab[6] << endl;
+	cout << j[0].conteneurDesMots.tab[7] << endl;
+	cout << j[0].conteneurDesMots.tab[8] << endl;
+	cout << j[0].conteneurDesMots.tab[9] << endl;
+	cout << j[0].conteneurDesMots.tab[10] << endl;
+	cout << j[0].conteneurDesMots.tab[11] << endl;
+	cout << j[0].conteneurDesMots.tab[12] << endl;
+	cout << j[0].conteneurDesMots.tab[13] << endl;
+	cout << j[0].conteneurDesMots.tab[14] << endl;
+	cout << j[0].conteneurDesMots.tab[15] << endl;
+	cout << j[0].conteneurDesMots.tab[16] << endl;
+	cout << j[0].conteneurDesMots.tab[17] << endl;
+	cout << j[0].conteneurDesMots.tab[18] << endl;
+	cout << j[0].conteneurDesMots.tab[19] << endl;
+	cout << j[0].conteneurDesMots.tab[20] << endl;
+	cout << j[0].conteneurDesMots.tab[21] << endl;
+	cout << j[0].conteneurDesMots.tab[22] << endl;
+		    
 															    
 	cout << "joueur 2 :" << endl;							    
-	cout << j[1].conteneurDesMots.tab[0] << endl;			    
-	cout << j[1].conteneurDesMots.tab[1] << endl;			    
-	cout << j[1].conteneurDesMots.tab[2] << endl;			    
+	cout << j[1].conteneurDesMots.tab[0] << endl;
+	cout << j[1].conteneurDesMots.tab[1] << endl;
+	cout << j[1].conteneurDesMots.tab[2] << endl;
+	cout << j[1].conteneurDesMots.tab[3] << endl;
+	cout << j[1].conteneurDesMots.tab[4] << endl;
+	cout << j[1].conteneurDesMots.tab[5] << endl;
+	cout << j[1].conteneurDesMots.tab[6] << endl;
+	cout << j[1].conteneurDesMots.tab[7] << endl;
+	cout << j[1].conteneurDesMots.tab[8] << endl;
+	cout << j[1].conteneurDesMots.tab[9] << endl;
+	cout << j[1].conteneurDesMots.tab[10] << endl;
+	cout << j[1].conteneurDesMots.tab[11] << endl;
+	cout << j[1].conteneurDesMots.tab[12] << endl;
+	cout << j[1].conteneurDesMots.tab[13] << endl;
+	cout << j[1].conteneurDesMots.tab[14] << endl;
+	cout << j[1].conteneurDesMots.tab[15] << endl;
+	cout << j[1].conteneurDesMots.tab[16] << endl;
+	cout << j[1].conteneurDesMots.tab[17] << endl;
+	cout << j[1].conteneurDesMots.tab[18] << endl;
+	cout << j[1].conteneurDesMots.tab[19] << endl;
+	cout << j[1].conteneurDesMots.tab[20] << endl;
+	cout << j[1].conteneurDesMots.tab[21] << endl;
+	cout << j[1].conteneurDesMots.tab[22] << endl;			    
 															    
 	cout << "*" << endl;
 
