@@ -19,13 +19,13 @@ using namespace std;
  * @brief enleves les doublons
  * @param[in] c le conteneur des mots
  */
-void triUnique(ConteneurTDE& c,Joueurs j ) {
+void triUnique(ConteneurTDE& c, Joueurs j) {
 
-for(int i=0;i<j.nbdemot;++i){
-  if(strcmp(c.tab[j], c.tab[j+1])==0){
-    delete[] c.tab[j];
-  }
-}
+	for (int i = 0; i < j.nbdemot; ++i) {
+		if (strcmp(c.tab[i], c.tab[i + 1]) == 0) {
+			delete[] c.tab[i];
+		}
+	}
 }
 
 /*bool triUnique(Item entre, Liste l) {
@@ -53,19 +53,19 @@ void triAlpha(ConteneurTDE& c, Joueurs& jr) {
 
 	for (int i = 0; i < jr.nbdemot; i++) {
 		for (int j = 0; j < jr.nbdemot - i - 1; j++) {
-			if (strcmp(c.tab[j], c.tab[j+1]) < 0) {
+			if (strcmp(c.tab[j], c.tab[j + 1]) < 0) {
 				//cout << "ok" << endl;
 			}
-			else if (strcmp(c.tab[j], c.tab[j+1]) > 0)
+			else if (strcmp(c.tab[j], c.tab[j + 1]) > 0)
 			{
 				//cout << "pas trié" << endl;
-				strcpy(tmp , c.tab[j]);
-				strcpy(c.tab[j] , c.tab[j + 1]);
-				strcpy(c.tab[j + 1] , tmp);
+				strcpy(tmp, c.tab[j]);
+				strcpy(c.tab[j], c.tab[j + 1]);
+				strcpy(c.tab[j + 1], tmp);
 			}
-			else if (strcmp(c.tab[j], c.tab[j+1]) == 0)
+			else if (strcmp(c.tab[j], c.tab[j + 1]) == 0)
 			{
-				
+
 			}
 		}
 	}
@@ -102,7 +102,7 @@ int main() {
 
 	cout << "Affichage des mots triés :" << endl;
 	triAlpha(j.conteneurDesMots, j);
-  triUnique(j.conteneurDesMots,j);
+	triUnique(j.conteneurDesMots, j);
 	for (int i = 0; i < j.nbdemot; i++) {
 		cout << j.conteneurDesMots.tab[i] << endl;
 	}
