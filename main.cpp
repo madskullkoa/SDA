@@ -78,92 +78,33 @@ int main() {
 		j[nbjoueurs].nbdemot++;
 		if ((strcmp(entree, "*") == 0)) {
 			hit++;
-			if (hit > 1)
+			if (hit > 1) {
+				j[nbjoueurs].nbdemot--;
 				break;
+			}
+
 			j[nbjoueurs].nbdemot--;
 			nbjoueurs++;
 			cpt = 0;
 			continue;
 		}
-		/*if (nbjoueurs > 1)
-			break;*/
-		
-
 		triUnique(j[nbjoueurs].conteneurDesMots, j[nbjoueurs], entree, cpt);
 		calcul_de_points(j[nbjoueurs]);
 		cpt++;
 
 	} while (true);
-	nbjoueurs--;
+	
 
+	for (int i = 0; i < hit; i++) {
+		triAlpha(j[i].conteneurDesMots, j[i]);
+	}
 
-	//for (int i = 0; i < nbjoueurs; i++) {
-	//	triAlpha(j[i].conteneurDesMots, j[i]);
-	//}
-
-	triAlpha(j[0].conteneurDesMots, j[0]);
-	triAlpha(j[1].conteneurDesMots, j[1]);
-
-
-	/*for (int i = 0; i < j[nbjoueurs].nbdemot; i++) {
-
-		for(int k = 0; k < nbjoueurs; k++) {
-			cout << "mots de joueur" << i << " : " << endl;
-			cout << j[i].conteneurDesMots.tab[k] << endl;
+	for (int k = 0; k < hit; k++) {
+		for (int i = 0; i < j[k].nbdemot; i++) {
+			cout << j[k].conteneurDesMots.tab[i] << endl;
 		}
-		
-	}*/
-	cout << "joueur 1 :" << endl;
-	cout << j[0].conteneurDesMots.tab[0] << endl;
-	cout << j[0].conteneurDesMots.tab[1] << endl;
-	cout << j[0].conteneurDesMots.tab[2] << endl;
-	cout << j[0].conteneurDesMots.tab[3] << endl;
-	cout << j[0].conteneurDesMots.tab[4] << endl;
-	cout << j[0].conteneurDesMots.tab[5] << endl;
-	cout << j[0].conteneurDesMots.tab[6] << endl;
-	cout << j[0].conteneurDesMots.tab[7] << endl;
-	cout << j[0].conteneurDesMots.tab[8] << endl;
-	cout << j[0].conteneurDesMots.tab[9] << endl;
-	cout << j[0].conteneurDesMots.tab[10] << endl;
-	cout << j[0].conteneurDesMots.tab[11] << endl;
-	cout << j[0].conteneurDesMots.tab[12] << endl;
-	cout << j[0].conteneurDesMots.tab[13] << endl;
-	cout << j[0].conteneurDesMots.tab[14] << endl;
-	cout << j[0].conteneurDesMots.tab[15] << endl;
-	cout << j[0].conteneurDesMots.tab[16] << endl;
-	cout << j[0].conteneurDesMots.tab[17] << endl;
-	cout << j[0].conteneurDesMots.tab[18] << endl;
-	cout << j[0].conteneurDesMots.tab[19] << endl;
-	cout << j[0].conteneurDesMots.tab[20] << endl;
-	cout << j[0].conteneurDesMots.tab[21] << endl;
-	cout << j[0].conteneurDesMots.tab[22] << endl;
-		    
-															    
-	cout << "joueur 2 :" << endl;							    
-	cout << j[1].conteneurDesMots.tab[0] << endl;
-	cout << j[1].conteneurDesMots.tab[1] << endl;
-	cout << j[1].conteneurDesMots.tab[2] << endl;
-	cout << j[1].conteneurDesMots.tab[3] << endl;
-	cout << j[1].conteneurDesMots.tab[4] << endl;
-	cout << j[1].conteneurDesMots.tab[5] << endl;
-	cout << j[1].conteneurDesMots.tab[6] << endl;
-	cout << j[1].conteneurDesMots.tab[7] << endl;
-	cout << j[1].conteneurDesMots.tab[8] << endl;
-	cout << j[1].conteneurDesMots.tab[9] << endl;
-	cout << j[1].conteneurDesMots.tab[10] << endl;
-	cout << j[1].conteneurDesMots.tab[11] << endl;
-	cout << j[1].conteneurDesMots.tab[12] << endl;
-	cout << j[1].conteneurDesMots.tab[13] << endl;
-	cout << j[1].conteneurDesMots.tab[14] << endl;
-	cout << j[1].conteneurDesMots.tab[15] << endl;
-	cout << j[1].conteneurDesMots.tab[16] << endl;
-	cout << j[1].conteneurDesMots.tab[17] << endl;
-	cout << j[1].conteneurDesMots.tab[18] << endl;
-	cout << j[1].conteneurDesMots.tab[19] << endl;
-	cout << j[1].conteneurDesMots.tab[20] << endl;
-	cout << j[1].conteneurDesMots.tab[21] << endl;
-	cout << j[1].conteneurDesMots.tab[22] << endl;			    
-															    
+	}
+
 	cout << "*" << endl;
 
 }
