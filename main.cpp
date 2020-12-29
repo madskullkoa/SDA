@@ -43,7 +43,7 @@ void triAlpha(ConteneurTDE& c, Joueurs& jr) {
 	for (int i = 0; i < jr.nbdemot; i++) {
 		for (int j = 0; j < jr.nbdemot - i - 1; j++) {
 			if (strcmp(c.tab[j], c.tab[j + 1]) < 0) {
-				
+
 			}
 			else if (strcmp(c.tab[j], c.tab[j + 1]) > 0)
 			{
@@ -53,7 +53,7 @@ void triAlpha(ConteneurTDE& c, Joueurs& jr) {
 			}
 			else if (strcmp(c.tab[j], c.tab[j + 1]) == 0)
 			{
-				
+
 			}
 		}
 	}
@@ -64,39 +64,39 @@ void triAlpha(ConteneurTDE& c, Joueurs& jr) {
 int main() {
 	Item entree;
 	Joueurs j[3];
-  int nbjoueurs;
-unsigned int cpt = 0;
-for(unsigned int i=0;i<4;++i){
-	initialisation(j[i]); 
-	initialiser(j[i].conteneurDesMots, 10, 2);
-	
-}
-  
+	int nbjoueurs;
+	unsigned int cpt = 0;
+	for (unsigned int i = 0; i < 4; ++i) {
+		initialisation(j[i]);
+		initialiser(j[i].conteneurDesMots, 10, 2);
+
+	}
+
 	do {
 		cin >> entree;
-    
+
 		if ((strcmp(entree, "*") == 0)) {
 			nbjoueurs++;
-			if(nbjoueurs > 2)
+			if (nbjoueurs > 2)
 				break;
 		}
-    
+
 		j[nbjoueurs].nbdemot++;
-		
+
 		triUnique(j[nbjoueurs].conteneurDesMots, j[nbjoueurs], entree, cpt);
 		calcul_de_points(j[nbjoueurs]);
 		cpt++;
-    
+
 	} while (true);
 
 
-	for(int i = 0; i < nbjoueurs ; i++){
+	for (int i = 0; i < nbjoueurs; i++) {
 		triAlpha(j[i].conteneurDesMots, j[i]);
 	}
-	
+
 	for (int i = 0; i < j[nbjoueurs].nbdemot; i++) {
 		cout << j[nbjoueurs].conteneurDesMots.tab[i] << endl;
 	}
- cout <<"*" <<endl;
+	cout << "*" << endl;
 
 }
