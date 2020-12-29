@@ -3,7 +3,16 @@
   * @version 1 � 18/11/2020
   * @brief Types : co�t-m�moire et domaine de variation
   */
-
+#pragma warning(disable:4996)
+#include <iostream>
+#include <cstring>
+#include <cassert>
+#include "Liste.h"
+#include "Structs.h"
+#include "ConteneurTDE.h"
+#include "points.h"
+#include "tri.h"
+using namespace std;
 
 
 int main() {
