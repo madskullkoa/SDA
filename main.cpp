@@ -4,7 +4,7 @@
   * @brief Types : co�t-m�moire et domaine de variation
   */
 
-#pragma error(disable:4996)
+
 #pragma warning(disable:4996)
 #include <iostream>
 #include <cstring>
@@ -20,15 +20,20 @@ using namespace std;
  * @brief enleves les doublons
  * @param[in] c le conteneur des mots
  */
-void triUnique(ConteneurTDE& c, Joueurs j, Mot entree, int cpt) {
-		for (int i = 0; i < j.nbdemot; ++i) {
-			if (strcmp(entree, c.tab[i]) == 0) {
-				cout << "Votre mot existe deja dans la base" << endl;
-			} else {
-				ecrire(j.conteneurDesMots, cpt, entree);
-			}
-}
+void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt) {
+	Mot tmp;
+	strcpy(tmp, entree);
+	for (int i = 0; i < j.nbdemot; ++i) {
+		if (strcmp(tmp, c.tab[i]) == 0) {
+			cout << "Votre mot existe deja dans la base" << endl;
+			j.nbdemot--;
+			return;
+		}
+	}
+	ecrire(c, cpt, tmp);
+	
 
+}
 /*bool triUnique(Item entre, Liste l) {
 	int taille = longueur(l);
 	bool Unique = 1;
@@ -92,10 +97,15 @@ int main() {
 		}
 		j.nbdemot++;
 		//ecrire(j.conteneurDesMots, cpt, entree);
-    triUnique(j.conteneurDesMots,j, entree,cpt);
+		triUnique(j.conteneurDesMots, j, entree, cpt);
 		calcul_de_points(j);
 		cpt++;
 	} while (true);
+
+
+	cout << "Affichage du nombre de mots :" << endl;
+	cout << j.nbdemot << endl;
+
 
 	cout << "Affichage des mots entrés :" << endl;
 	for (int i = 0; i < j.nbdemot; i++) {
@@ -112,7 +122,7 @@ int main() {
 
 	cout << "Affichage des mots sans doublons :" << endl;
 
-	triUnique(j.conteneurDesMots, j);
+	triUnique(j.conteneurDesMots, j, entree, cpt);
 	for (int i = 0; i < j.nbdemot; i++) {
 		cout << j.conteneurDesMots.tab[i] << endl;
 	}

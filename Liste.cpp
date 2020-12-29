@@ -29,10 +29,10 @@ Item* lire(const Liste& l, unsigned int pos) { //pointeur vers Item => pointeur 
 	return lire(l.c, pos);
 }
 
-void ecrire(Liste& l, unsigned int pos, const Item& it) {
-	assert(pos < l.nb);
-	ecrire(l.c, pos, it);
-}
+//void ecrire(Liste& l, unsigned int pos, const Item& it) {
+//	assert(pos < l.nb);
+//	ecrire(l.c, pos, it);
+//}
 
 void inserer(Liste& l, unsigned int pos, const Item& it) {
 	assert(pos <= l.nb);

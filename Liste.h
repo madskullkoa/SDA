@@ -51,7 +51,7 @@ Item* lire(const Liste& l, unsigned int pos);
  * @param[in] it L'item.
  * @pre 0 <= pos < longueur(l).
 */
-void ecrire(Liste& l, unsigned int pos, const Item& it);
+//void ecrire(Liste& l, unsigned int pos, const Item& it);
 
 /**
  * @brief Ins�rer un �l�ment dans une liste.
