@@ -23,7 +23,7 @@ void triUnique(ConteneurTDE& c, Joueurs j) {
 
 	for (int i = 0; i < j.nbdemot; ++i) {
 		if (strcmp(c.tab[i], c.tab[i + 1]) == 0) {
-			delete[] c.tab[i];
+			strcpy(c.tab[i+1], c.tab[i + 2]);
 		}
 	}
 }
