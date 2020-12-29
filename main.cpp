@@ -101,5 +101,9 @@ int main() {
 		cpt++;
 	} while (true);
 
-	cout << j.total << endl;
+	for (int i = 0; i < j.nbdemot; i++) {
+		cout << j.listeDesMots.c.tab[i] << endl;
+	}
+
+	//cout << j.total << endl;
 }

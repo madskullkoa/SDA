@@ -5,7 +5,7 @@ typedef struct {
 	/// Pas d'extension du conteneur (>0).
 	unsigned int pasExtension;
 	/// Conteneur alloué en mémoire dynamique.
-	Item* tab;
+	Mot* tab;
 }ConteneurTDE;
 
 typedef struct {
@@ -19,5 +19,5 @@ typedef struct {
 	int* pointparmot;
 	int nbdemot;
 	int total;
-	Liste listeDesMots;
+	ConteneurTDE conteneurDesMots;
 }Joueurs;
