@@ -63,8 +63,9 @@ void triAlpha(ConteneurTDE& c, Joueurs& jr) {
 
 int main() {
 	Item entree;
-	Joueurs j[3];
-	int nbjoueurs;
+	Joueurs j[4];
+	int nbjoueurs = 0;
+	int hit = 0;
 	unsigned int cpt = 0;
 	for (unsigned int i = 0; i < 4; ++i) {
 		initialisation(j[i]);
@@ -74,29 +75,54 @@ int main() {
 
 	do {
 		cin >> entree;
-
-		if ((strcmp(entree, "*") == 0)) {
-			nbjoueurs++;
-			if (nbjoueurs > 2)
-				break;
-		}
-
 		j[nbjoueurs].nbdemot++;
+		if ((strcmp(entree, "*") == 0)) {
+			hit++;
+			if (hit > 1)
+				break;
+			j[nbjoueurs].nbdemot--;
+			nbjoueurs++;
+			cpt = 0;
+			continue;
+		}
+		/*if (nbjoueurs > 1)
+			break;*/
+		
 
 		triUnique(j[nbjoueurs].conteneurDesMots, j[nbjoueurs], entree, cpt);
 		calcul_de_points(j[nbjoueurs]);
 		cpt++;
 
 	} while (true);
+	nbjoueurs--;
 
 
-	for (int i = 0; i < nbjoueurs; i++) {
-		triAlpha(j[i].conteneurDesMots, j[i]);
-	}
+	//for (int i = 0; i < nbjoueurs; i++) {
+	//	triAlpha(j[i].conteneurDesMots, j[i]);
+	//}
 
-	for (int i = 0; i < j[nbjoueurs].nbdemot; i++) {
-		cout << j[nbjoueurs].conteneurDesMots.tab[i] << endl;
-	}
+	triAlpha(j[0].conteneurDesMots, j[0]);
+	triAlpha(j[1].conteneurDesMots, j[1]);
+
+
+	/*for (int i = 0; i < j[nbjoueurs].nbdemot; i++) {
+
+		for(int k = 0; k < nbjoueurs; k++) {
+			cout << "mots de joueur" << i << " : " << endl;
+			cout << j[i].conteneurDesMots.tab[k] << endl;
+		}
+		
+	}*/
+	cout << "joueur 1 :" << endl;
+	cout << j[0].conteneurDesMots.tab[0] << endl;
+	cout << j[0].conteneurDesMots.tab[1] << endl;
+	cout << j[0].conteneurDesMots.tab[2] << endl;			    
+															    
+	cout << "joueur 2 :" << endl;							    
+	cout << j[1].conteneurDesMots.tab[0] << endl;			    
+	cout << j[1].conteneurDesMots.tab[1] << endl;			    
+	cout << j[1].conteneurDesMots.tab[2] << endl;			    
+															    
 	cout << "*" << endl;
 
 }
