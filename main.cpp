@@ -25,7 +25,7 @@ void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt) {
 	strcpy(tmp, entree);
 	for (int i = 0; i < j.nbdemot; ++i) {
 		if (strcmp(tmp, c.tab[i]) == 0) {
-			cout << "Votre mot existe deja dans la base" << endl;
+			//cout << "Votre mot existe deja dans la base" << endl;
 			j.nbdemot--;
 			return;
 		}
@@ -101,26 +101,6 @@ int main() {
 		calcul_de_points(j);
 		cpt++;
 	} while (true);
-
-
-	cout << "Affichage du nombre de mots :" << endl;
-	cout << j.nbdemot << endl;
-
-
-	cout << "Affichage des mots entrés :" << endl;
-	for (int i = 0; i < j.nbdemot; i++) {
-		cout << j.conteneurDesMots.tab[i] << endl;
-	}
-
-	cout << "Affichage des mots triés :" << endl;
-	triAlpha(j.conteneurDesMots, j);
-
-	for (int i = 0; i < j.nbdemot; i++) {
-		cout << j.conteneurDesMots.tab[i] << endl;
-	}
-
-
-	cout << "Affichage des mots sans doublons :" << endl;
 
 	triUnique(j.conteneurDesMots, j, entree, cpt);
 	for (int i = 0; i < j.nbdemot; i++) {
