@@ -20,12 +20,17 @@ using namespace std;
  * @param[in] c le conteneur des mots
  */
 void triUnique(ConteneurTDE& c, Joueurs j) {
-
+	for(int k = 0; k< j.nbdemot; k++){
 	for (int i = 0; i < j.nbdemot; ++i) {
 		if (strcmp(c.tab[i], c.tab[i + 1]) == 0) {
 			strcpy(c.tab[i+1], c.tab[i + 2]);
       j.nbdemot--;
 		}
+    		/*if (strcmp(c.tab[i-1], c.tab[i]) == 0) {
+			strcpy(c.tab[i], c.tab[i+1]);
+      j.nbdemot--;
+		}*/
+	}
 	}
 }
 
@@ -103,6 +108,14 @@ int main() {
 
 	cout << "Affichage des mots triés :" << endl;
 	triAlpha(j.conteneurDesMots, j);
+	
+	for (int i = 0; i < j.nbdemot; i++) {
+		cout << j.conteneurDesMots.tab[i] << endl;
+	}
+
+
+		cout << "Affichage des mots sans doublons :" << endl;
+	
 	triUnique(j.conteneurDesMots, j);
 	for (int i = 0; i < j.nbdemot; i++) {
 		cout << j.conteneurDesMots.tab[i] << endl;
