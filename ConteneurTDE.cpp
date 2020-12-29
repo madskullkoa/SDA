@@ -2,7 +2,7 @@
  * @file ConteneurTDE.cpp
  * @brief Composant de conteneur d'items de capacit� extensible
  */
-
+#pragma warning(disable:4996)
 #include <iostream>
 #include <cassert>
 #include <cstring>
