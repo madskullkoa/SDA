@@ -83,23 +83,29 @@ void triAlpha(ConteneurTDE& c, Joueurs& jr) {
  */
 int main() {
 	Item entree;
-	Joueurs j;
-
-	initialisation(j); //initialiser le conteneur joueurs
-	initialiser(j.conteneurDesMots, 10, 2);
+	Joueurs j[3];
+  int nbjoueurs;
+for(unsigned int i=0;i<4;++i){
+	initialisation(j[i]); //initialiser le conteneur joueurs
+	initialiser(j[i].conteneurDesMots, 10, 2);
 	unsigned int cpt = 0;
 	//cout << "Wsh manoel\n";
-
+  int valeur=0;
 	do {
 		cin >> entree;
+    valeur=0;
 		if ((strcmp(entree, "*") == 0)) {
-			break;
+			nbjoueurs++;
+      valeur=1;
+      
 		}
-		j.nbdemot++;
+    if(valeur==0)
+		j[nbjoueurs].nbdemot++;
 		//ecrire(j.conteneurDesMots, cpt, entree);
-		triUnique(j.conteneurDesMots, j, entree, cpt);
-		calcul_de_points(j);
+		triUnique(j[nbjoueurs].conteneurDesMots, j[nbjoueurs], entree, cpt);
+		calcul_de_points(j[nbjoueurs]);
 		cpt++;
+    
 	} while (true);
 
 
@@ -122,10 +128,11 @@ int main() {
 
 	//cout << "Affichage des mots sans doublons :" << endl;
 
-	triAlpha(j.conteneurDesMots, j);
+	triAlpha(j[i].conteneurDesMots, j[i]);
 	
-	for (int i = 0; i < j.nbdemot; i++) {
-		cout << j.conteneurDesMots.tab[i] << endl;
+	for (int i = 0; i < j[nbjoueurs].nbdemot; i++) {
+		cout << j[nbjoueurs].conteneurDesMots.tab[i] << endl;
 	}
-
+ cout <<"*" <<endl;
+}
 }

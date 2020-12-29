@@ -1,19 +1,19 @@
 #pragma once
 typedef struct {
-	/// Capacité du conteneur (>0).
+	/// Capacitï¿½ du conteneur (>0).
 	unsigned int capacite;
 	/// Pas d'extension du conteneur (>0).
 	unsigned int pasExtension;
-	/// Conteneur alloué en mémoire dynamique.
+	/// Conteneur allouï¿½ en mï¿½moire dynamique.
 	Mot* tab;
-	/// Capacité réelle de mots
+	/// Capacitï¿½ rï¿½elle de mots
 	unsigned int nbMots;
 }ConteneurTDE;
 
 typedef struct {
-	/// Conteneur mémorisant les éléments de la liste.
+	/// Conteneur mï¿½morisant les ï¿½lï¿½ments de la liste.
 	ConteneurTDE c;
-	/// Nombre d'éléments stockés dans la liste.
+	/// Nombre d'ï¿½lï¿½ments stockï¿½s dans la liste.
 	unsigned int nb;
 }Liste;
 
