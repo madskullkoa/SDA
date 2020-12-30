@@ -72,9 +72,14 @@ void comparaison(Joueurs* j, int nbjoueurs) {
  */
 void triAlpha(ConteneurTDE& c, Joueurs& jr) {
 
-	Mot tmp;
+	char* tmp;
+	
+
+
 
 	for (int i = 0; i < jr.nbdemot; i++) {
+		tmp = new char[30];
+
 		for (int j = 0; j < jr.nbdemot - i - 1; j++) {
 			if (strcmp(c.tab[j], c.tab[j + 1]) < 0) {
 
@@ -89,7 +94,11 @@ void triAlpha(ConteneurTDE& c, Joueurs& jr) {
 			{
 
 			}
-		}
+		}	
+		
+		delete[] tmp;
+
 	}
+
 
 }
