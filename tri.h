@@ -17,6 +17,12 @@ using namespace std;
 void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt); 
 
 /**
+ * @brief Compare deux listes
+ * @param[in] c le conteneur des mots
+ * @param[in] j La structure Joueurs
+ */
+void comparaison(Joueurs* j, int nbjoueurs);
+/**
  * @brief Trier la liste de mots par ordre alphabetique
  * @param[in] entre le mot entré.
  * @param[in] c Le conteneur des mots

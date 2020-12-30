@@ -26,6 +26,56 @@ void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt) {
 	ecrire(c, cpt, tmp);
 }
 
+
+/**
+ * @brief Compare deux listes
+ * @param[in] c le conteneur des mots
+ * @param[in] j La structure Joueurs
+ */
+ /*afficher les mots de la seconde liste n’apparaissant pas
+dans la première ;*/
+void comparaison(Joueurs* j, int nbjoueurs){
+
+	//bool unique = 0;
+  
+    for(unsigned int k=0; k < j[1].nbdemot;++k){
+    	for(unsigned int i=0; i < j[0].nbdemot;++i){
+        
+			if(strcmp(j[1].conteneurDesMots.tab[k],j[0].conteneurDesMots.tab[i])==0){
+				break;
+			}
+			else /*if(strcmp(j[1].conteneurDesMots.tab[k],j[0].conteneurDesMots.tab[i])!=0)*/{
+          	cout << j[1].conteneurDesMots.tab[k] << endl;         
+        	}
+
+        }
+    }
+  
+
+
+	//des que tu peux m'appeller n'hesite pas
+
+
+
+    //Moij'aurais fait ce que j'ai mis la haut azy
+	/*for(int i = 0; i < j[0].nbdemot; i++){
+		for(int k = 0; k < j[1].nbdemot; k++){
+			if(strcmp(j[1].conteneurDesMots.tab[k], j[1].conteneurDesMots.tab[i]) == 0){
+				break;
+			}
+
+			
+		}
+
+
+
+
+	}*/
+
+
+
+  
+}
 /**
  * @brief Trier la liste de mots par ordre alphabetique
  * @param[in] entre le mot entré.

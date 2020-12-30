@@ -1,5 +1,5 @@
 /*
-  * @author NUNES BORBA Manoel & MEDILEH Youcef
+  * @author MEDILEH Youcef & NUNES BORBA Manoel
   * @version 1 � 18/11/2020
   * @brief Types : co�t-m�moire et domaine de variation
   */
@@ -14,40 +14,14 @@
 #include "tri.h"
 using namespace std;
 
-
-int main() {
-	Item entree;
-	Joueurs j[4];
-	int nbjoueurs = 0;
-	int hit = 0;
-	unsigned int cpt = 0;
-	for (unsigned int i = 0; i < 4; ++i) {
-		initialisation(j[i]);
-		initialiser(j[i].conteneurDesMots, 10, 2);
-
-	}
-
-	do {
-		cin >> entree;
-		j[nbjoueurs].nbdemot++;
-		if ((strcmp(entree, "*") == 0)) {
-			hit++;
-			if (hit > 1) {
-				j[nbjoueurs].nbdemot--;
-				break;
-			}
-
-			j[nbjoueurs].nbdemot--;
-			nbjoueurs++;
-			cpt = 0;
-			continue;
-		}
-		triUnique(j[nbjoueurs].conteneurDesMots, j[nbjoueurs], entree, cpt);
-		calcul_de_points(j[nbjoueurs]);
-		cpt++;
-
-	} while (true);
-	
+/**
+ * @brief Affichage de toute les listes
+ * @see detruire, la liste est à désallouer en fin d'utilisation.
+ * @param[in] j le conteneur 
+ * @param[in] hit le nombre de joueurs/ le nombre de fois où le programme rencontre le "*"
+ * @pre vide pour l'instant ? on verra
+ */
+void affichage(Joueurs* j, int hit){	
 
 	for (int i = 0; i < hit; i++) {
 		triAlpha(j[i].conteneurDesMots, j[i]);
@@ -60,5 +34,46 @@ int main() {
 	}
 
 	cout << "*" << endl;
+}
+
+
+int main() {
+	Item entree;
+	Joueurs j[4];
+	int nbjoueurs = 0;
+	int hit = 0;
+	unsigned int cpt = 0;
+	for (unsigned int i = 0; i < 4; ++i) {
+		initialisation(j[i]);
+		initialiser(j[i].conteneurDesMots, 10, 2);
+	}
+
+	do {
+		cin >> entree;
+		j[nbjoueurs].nbdemot++;
+		if ((strcmp(entree, "*") == 0)) {
+			hit++;
+			if (hit > 1) {
+				j[nbjoueurs].nbdemot--;
+				break;
+			}
+      
+			j[nbjoueurs].nbdemot--;
+			nbjoueurs++;
+			cpt = 0;
+			continue; //wait att bah c bon c limité a deux jouers
+
+      if(nbjoueurs==1){ //
+
+        break;
+      }
+		}
+		triUnique(j[nbjoueurs].conteneurDesMots, j[nbjoueurs], entree, cpt);
+		calcul_de_points(j[nbjoueurs]);
+		cpt++;
+
+	} while (true);
+  comparaison(j,nbjoueurs); 
+	//affichage(j, hit);
 
 }
