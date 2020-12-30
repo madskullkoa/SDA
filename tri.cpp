@@ -14,20 +14,29 @@ using namespace std;
  * @param[in] c le conteneur des mots
  */
 void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt) {
+	
 	Mot tmp;
 	strcpy(tmp, entree);
-	for (int i = 0; i < j.nbdemot; ++i) {
+	for (int i = 0; i <= cpt; ++i) {
 		if (strcmp(tmp, c.tab[i]) == 0) {
-			cout << "Votre mot : " << tmp <<" existe deja dans la base -> " << entree<<endl;
-			cout << "la gueule du mot d'avant : " << c.tab[i-1] << endl;
-			cout << "la gueule qu'il a : " << c.tab[i] << endl;
-			cout << "la gueule du mot d'apres : " << c.tab[i+1] << endl;
+			//cout << "Votre mot : " << tmp << " existe deja dans la base -> " << entree << endl;
+			//cout << "la gueule du mot d'avant : " << c.tab[i - 1] << endl;
+			//cout << "la gueule qu'il a : " << c.tab[i] << endl;
+			//cout << "la gueule du mot d'apres : " << c.tab[i + 1] << endl;
 			j.nbdemot--;
 			return;
 		}
 	}
 	ecrire(c, cpt, tmp);
-	cout << "MOT ENREGISTE : " << tmp <<endl;
+	//cout << "MOT ENREGISTE : " << tmp << endl;
+	//cout << "########################################################" << endl;
+	//cout << "# Affichage des mots jusqu'ici" << endl;
+	//for (int i = 1; i <= j.nbdemot; i++) {
+		//cout << "# " << c.tab[i] << endl;
+	//}
+	//cout << "########################################################" << endl;
+
+
 }
 
 
@@ -45,8 +54,8 @@ void comparaison(Joueurs* j, int nbjoueurs) {
 	int hit = 0;
 	tabIndices = new int[j[1].nbdemot];
 
-	for (unsigned int k = 0; k < j[1].nbdemot; ++k) {
-		for (unsigned int i = 0; i < j[0].nbdemot; ++i) {
+	for (unsigned int k = 1; k < j[1].nbdemot; ++k) {
+		for (unsigned int i = 1; i <= j[0].nbdemot; ++i) {
 			Unique = 1;
 			if (strcmp(j[1].conteneurDesMots.tab[k], j[0].conteneurDesMots.tab[i]) == 0) {
 				Unique = 0;
@@ -78,14 +87,10 @@ void triAlpha(ConteneurTDE& c, Joueurs& jr) {
 
 	//char* tmp;
 	Mot tmp;
-
-
-
-
 	for (int i = 0; i < jr.nbdemot; i++) {
 		//tmp = new char[30];
 
-		for (int j = 0; j < jr.nbdemot - i - 1; j++) {
+		for (int j = 1; j < jr.nbdemot - i - 1; j++) {
 			if (strcmp(c.tab[j], c.tab[j + 1]) < 0) {
 
 			}

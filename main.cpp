@@ -28,8 +28,8 @@ void affichageDeTousLesMots(Joueurs* j, int hit) {
 	}
 
 	for (int k = 0; k < hit; k++) {
-		cout << "############### joueur " << k + 1 << " ###############" << endl;
-		for (int i = 0; i < j[k].nbdemot; i++) {
+		//cout << "############### joueur " << k + 1 << " ###############" << endl;
+		for (int i = 1; i < j[k].nbdemot; i++) {
 			cout << j[k].conteneurDesMots.tab[i] << endl;
 		}
 	}
@@ -46,7 +46,7 @@ int main() {
 	unsigned int cpt = 0;
 	for (unsigned int i = 0; i < 4; ++i) {
 		initialisation(j[i]);
-		initialiser(j[i].conteneurDesMots, 30, 2);
+		initialiser(j[i].conteneurDesMots, 10, 2);
 	}
 
 	do {
@@ -69,7 +69,7 @@ int main() {
 				break;
 			}
 		}
-		triUnique(j[nbjoueurs].conteneurDesMots, j[nbjoueurs], entree, cpt);
+		triUnique(j[nbjoueurs].conteneurDesMots, j[nbjoueurs], entree, j[nbjoueurs].nbdemot);
 		calcul_de_points(j[nbjoueurs]);
 		cpt++;
 
@@ -77,11 +77,12 @@ int main() {
 
 
 
-	cout << "################################ AFFICHAGE FINAL ################################" << endl;
-	//triAlpha(j[0].conteneurDesMots, j[0]);
-	//triAlpha(j[1].conteneurDesMots, j[1]);
-	affichageDeTousLesMots(j, hit);
-	//comparaison(j,hit); 
+	//cout << "################################ AFFICHAGE FINAL ################################" << endl;
+	triAlpha(j[0].conteneurDesMots, j[0]);
+	triAlpha(j[1].conteneurDesMots, j[1]);
+	//affichageDeTousLesMots(j, hit);
+	comparaison(j,hit);
+	cout << "*" << endl;
 
 
 }
