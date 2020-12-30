@@ -21,7 +21,7 @@ using namespace std;
  * @param[in] hit le nombre de joueurs/ le nombre de fois où le programme rencontre le "*"
  * @pre vide pour l'instant ? on verra
  */
-void affichage(Joueurs* j, int hit){	
+void affichageDeTousLesMots(Joueurs* j, int hit){	
 
 	for (int i = 0; i < hit; i++) {
 		triAlpha(j[i].conteneurDesMots, j[i]);
@@ -73,7 +73,11 @@ int main() {
 		cpt++;
 
 	} while (true);
-  comparaison(j,nbjoueurs); 
-	//affichage(j, hit);
+
+	triAlpha(j[0].conteneurDesMots, j[0]);
+	triAlpha(j[1].conteneurDesMots, j[1]);
+
+    comparaison(j,hit); 
+
 
 }
