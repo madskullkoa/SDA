@@ -18,12 +18,16 @@ void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt) {
 	strcpy(tmp, entree);
 	for (int i = 0; i < j.nbdemot; ++i) {
 		if (strcmp(tmp, c.tab[i]) == 0) {
-			//cout << "Votre mot existe deja dans la base" << endl;
+			cout << "Votre mot : " << tmp <<" existe deja dans la base -> " << entree<<endl;
+			cout << "la gueule du mot d'avant : " << c.tab[i-1] << endl;
+			cout << "la gueule qu'il a : " << c.tab[i] << endl;
+			cout << "la gueule du mot d'apres : " << c.tab[i+1] << endl;
 			j.nbdemot--;
 			return;
 		}
 	}
 	ecrire(c, cpt, tmp);
+	cout << "MOT ENREGISTE : " << tmp <<endl;
 }
 
 
@@ -72,13 +76,14 @@ void comparaison(Joueurs* j, int nbjoueurs) {
  */
 void triAlpha(ConteneurTDE& c, Joueurs& jr) {
 
-	char* tmp;
-	
+	//char* tmp;
+	Mot tmp;
+
 
 
 
 	for (int i = 0; i < jr.nbdemot; i++) {
-		tmp = new char[30];
+		//tmp = new char[30];
 
 		for (int j = 0; j < jr.nbdemot - i - 1; j++) {
 			if (strcmp(c.tab[j], c.tab[j + 1]) < 0) {
@@ -94,9 +99,9 @@ void triAlpha(ConteneurTDE& c, Joueurs& jr) {
 			{
 
 			}
-		}	
-		
-		delete[] tmp;
+		}
+
+		//delete[] tmp;
 
 	}
 

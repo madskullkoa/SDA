@@ -50,7 +50,7 @@ void calcul_de_points(Joueurs& j) {
 
 		return;
 	else {
-		for (int i = 0; i < j.nbdemot; i++) { 
+		for (int i = 0; i < j.nbdemot; i++) {
 			int taille_du_mot = strlen(j.conteneurDesMots.tab[i]);
 
 

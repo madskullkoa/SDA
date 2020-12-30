@@ -17,17 +17,18 @@ using namespace std;
 /**
  * @brief Affichage de toute les listes
  * @see detruire, la liste est à désallouer en fin d'utilisation.
- * @param[in] j le conteneur 
+ * @param[in] j le conteneur
  * @param[in] hit le nombre de joueurs/ le nombre de fois où le programme rencontre le "*"
  * @pre vide pour l'instant ? on verra
  */
-void affichageDeTousLesMots(Joueurs* j, int hit){	
+void affichageDeTousLesMots(Joueurs* j, int hit) {
 
 	for (int i = 0; i < hit; i++) {
-		triAlpha(j[i].conteneurDesMots, j[i]);
+		//triAlpha(j[i].conteneurDesMots, j[i]);
 	}
 
 	for (int k = 0; k < hit; k++) {
+		cout << "############### joueur " << k + 1 << " ###############" << endl;
 		for (int i = 0; i < j[k].nbdemot; i++) {
 			cout << j[k].conteneurDesMots.tab[i] << endl;
 		}
@@ -45,7 +46,7 @@ int main() {
 	unsigned int cpt = 0;
 	for (unsigned int i = 0; i < 4; ++i) {
 		initialisation(j[i]);
-		initialiser(j[i].conteneurDesMots, 10, 2);
+		initialiser(j[i].conteneurDesMots, 30, 2);
 	}
 
 	do {
@@ -57,16 +58,16 @@ int main() {
 				j[nbjoueurs].nbdemot--;
 				break;
 			}
-      
+
 			j[nbjoueurs].nbdemot--;
 			nbjoueurs++;
 			cpt = 0;
-			continue; //wait att bah c bon c limité a deux jouers
+			continue;
 
-      if(nbjoueurs==1){ //
+			if (nbjoueurs == 1) {
 
-        break;
-      }
+				break;
+			}
 		}
 		triUnique(j[nbjoueurs].conteneurDesMots, j[nbjoueurs], entree, cpt);
 		calcul_de_points(j[nbjoueurs]);
@@ -74,10 +75,13 @@ int main() {
 
 	} while (true);
 
-	triAlpha(j[0].conteneurDesMots, j[0]);
-	triAlpha(j[1].conteneurDesMots, j[1]);
 
-    comparaison(j,hit); 
+
+	cout << "################################ AFFICHAGE FINAL ################################" << endl;
+	//triAlpha(j[0].conteneurDesMots, j[0]);
+	//triAlpha(j[1].conteneurDesMots, j[1]);
+	affichageDeTousLesMots(j, hit);
+	//comparaison(j,hit); 
 
 
 }

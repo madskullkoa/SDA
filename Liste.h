@@ -11,14 +11,14 @@
 #include "points.h"
 #include "Structs.h"
 
-/**
- * @brief Initialiser une liste vide, la liste est allouée en mémoire dynamique.
- * @see detruire, la liste est à désallouer en fin d'utilisation.
- * @param[out] l La liste à initialiser.
- * @param[in] capa Capacité de la liste.
- * @param[in] pas Pas d'extension de la liste.
- * @pre capa > 0 et pas > 0.
- */
+ /**
+  * @brief Initialiser une liste vide, la liste est allouée en mémoire dynamique.
+  * @see detruire, la liste est à désallouer en fin d'utilisation.
+  * @param[out] l La liste à initialiser.
+  * @param[in] capa Capacité de la liste.
+  * @param[in] pas Pas d'extension de la liste.
+  * @pre capa > 0 et pas > 0.
+  */
 void initialiser(Liste& l, unsigned int capa, unsigned int pas);
 
 /**

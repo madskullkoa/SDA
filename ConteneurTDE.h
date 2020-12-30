@@ -13,16 +13,16 @@
 
 
 
-/**
- * @brief Initialise un conteneur d'items.
- * Allocation en mémoire dynamique du conteneur d'items
- * de capacité (capa) extensible par pas d'extension (p).
- * @see detruire, pour sa désallocation en fin d'utilisation.
- * @param[out] c Le conteneur d'items.
- * @param [in] capa Capacité du conteneur.
- * @param [in] p Pas d'extension de capacité.
- * @pre capa > 0 et p > 0.
- */
+ /**
+  * @brief Initialise un conteneur d'items.
+  * Allocation en mémoire dynamique du conteneur d'items
+  * de capacité (capa) extensible par pas d'extension (p).
+  * @see detruire, pour sa désallocation en fin d'utilisation.
+  * @param[out] c Le conteneur d'items.
+  * @param [in] capa Capacité du conteneur.
+  * @param [in] p Pas d'extension de capacité.
+  * @pre capa > 0 et p > 0.
+  */
 void initialiser(ConteneurTDE& c, unsigned int capa, unsigned int p);
 
 /**
