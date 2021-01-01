@@ -21,7 +21,7 @@ using namespace std;
  * @param[in] hit le nombre de joueurs/ le nombre de fois où le programme rencontre le "*"
  * @pre vide pour l'instant ? on verra
  */
-void affichageDeTousLesMots(TabJoueurs* j, int hit) {
+void affichageDeTousLesMots(Joueurs* j, int hit) {
 
 	for (int i = 0; i < hit; i++) {
 		//triAlpha(j[i].conteneurDesMots, j[i]);
@@ -45,10 +45,10 @@ void affichageDeTousLesMots(TabJoueurs* j, int hit) {
  * @pre vide pour l'instant ? on verra
  */
 void initialisationDesJoueurs(TabJoueurs& j, unsigned int nbj) {
-	j = new TabJoueurs[1];
+	j = new Joueurs[1];
 }
 
-void detruireJoueurs(TabJoueurs*& j) {
+void detruireJoueurs(Joueurs*& j) {
 	delete[] j;
 	j = NULL;
 
@@ -61,10 +61,10 @@ void detruireJoueurs(TabJoueurs*& j) {
  * @param[in] nbjoueurs le nombre de joueurs avant de l'incrementer
  * @pre vide pour l'instant ? on verra
  */
-void ajouterJoueurs(TabJoueurs *j, unsigned int& nbjoueurs) {
+void ajouterJoueurs(Joueurs *j, unsigned int& nbjoueurs) {
 
 	unsigned int newT = ++nbjoueurs;
-	TabJoueurs* newTaille = new TabJoueurs[newT];
+	Joueurs* newTaille = new Joueurs[newT];
 
 	for (int i = 0; i < nbjoueurs; i++) {
 		newTaille[i] = j[i];
