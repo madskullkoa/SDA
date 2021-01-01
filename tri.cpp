@@ -54,15 +54,15 @@ void comparaison(Joueurs* j, int nbjoueurs) {
 	int hit = 0;
 	tabIndices = new int[j[1].nbdemot];
 
-	for (unsigned int k = 1; k < j[1].nbdemot; ++k) {
-		for (unsigned int i = 1; i <= j[0].nbdemot; ++i) {
+	for (unsigned int k = 1; k < j[1].nbdemot; ++k) {//la liste de mots du gars
+		for (unsigned int i = 1; i <= j[0].nbdemot; ++i) { //le dico
 			Unique = 1;
 			if (strcmp(j[1].conteneurDesMots.tab[k], j[0].conteneurDesMots.tab[i]) == 0) {
 				Unique = 0;
 				break;
 			}
 		}
-		if (Unique == 1) {
+		if (Unique == 0) {
 			tabIndices[hit] = k;
 			hit++;
 		}
