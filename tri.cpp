@@ -44,7 +44,7 @@ void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt) {
  * @brief Compare deux listes
  * @param[in] c le conteneur des mots
  * @param[in] j La structure Joueurs
- */
+ */	
  /*afficher les mots de la seconde liste n’apparaissant pas
 dans la première ;*/
 void comparaison(Joueurs* j, int nbjoueurs) {
@@ -54,7 +54,7 @@ void comparaison(Joueurs* j, int nbjoueurs) {
 	int hit = 0;
 	tabIndices = new int[j[1].nbdemot];
 
-	for (unsigned int k = 1; k < j[1].nbdemot; ++k) {//la liste de mots du gars
+	for (unsigned int k = 1; k <= j[1].nbdemot; ++k) {//la liste de mots du gars
 		for (unsigned int i = 1; i <= j[0].nbdemot; ++i) { //le dico
 			Unique = 1;
 			if (strcmp(j[1].conteneurDesMots.tab[k], j[0].conteneurDesMots.tab[i]) == 0) {
@@ -90,7 +90,7 @@ void triAlpha(ConteneurTDE& c, Joueurs& jr) {
 	for (int i = 0; i < jr.nbdemot; i++) {
 		//tmp = new char[30];
 
-		for (int j = 1; j < jr.nbdemot - i - 1; j++) {
+		for (int j = 1; j <= jr.nbdemot - i - 1; j++) {
 			if (strcmp(c.tab[j], c.tab[j + 1]) < 0) {
 
 			}

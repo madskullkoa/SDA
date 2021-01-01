@@ -29,7 +29,7 @@ void affichageDeTousLesMots(Joueurs* j, int hit) {
 
 	for (int k = 0; k < hit; k++) {
 		//cout << "############### joueur " << k + 1 << " ###############" << endl;
-		for (int i = 1; i < j[k].nbdemot; i++) {
+		for (int i = 1; i <= j[k].nbdemot; i++) {
 			cout << j[k].conteneurDesMots.tab[i] << endl;
 		}
 	}
