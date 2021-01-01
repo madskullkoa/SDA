@@ -44,6 +44,7 @@ int main() {
 	int nbjoueurs = 0;
 	int hit = 0;
 	unsigned int cpt = 0;
+    unsigned int etoile=0;
 	for (unsigned int i = 0; i < 4; ++i) {
 		initialisation(j[i]);
 		initialiser(j[i].conteneurDesMots, 10, 2);
@@ -53,8 +54,9 @@ int main() {
 		cin >> entree;
 		j[nbjoueurs].nbdemot++;
 		if ((strcmp(entree, "*") == 0)) {
+        etoile++;
 			hit++;
-			if (hit > 1) {
+			if (hit > 6) {
 				j[nbjoueurs].nbdemot--;
 				break;
 			}
@@ -64,10 +66,6 @@ int main() {
 			cpt = 0;
 			continue;
 
-			if (nbjoueurs == 1) {
-
-				break;
-			}
 		}
 		triUnique(j[nbjoueurs].conteneurDesMots, j[nbjoueurs], entree, j[nbjoueurs].nbdemot);
 		calcul_de_points(j[nbjoueurs]);
@@ -83,6 +81,4 @@ int main() {
 	//affichageDeTousLesMots(j, hit);
 	comparaison(j,hit);
 	cout << "*" << endl;
-
-
 }
