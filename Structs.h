@@ -24,7 +24,8 @@ typedef struct {
 	ConteneurTDE conteneurDesMots;
 }Joueurs;
 
+typedef TabJoueurs Joueurs*
 
-typedef struct {
+/*typedef struct {
 	Joueurs* j;
-}TabJoueurs;
+}TabJoueurs;*/

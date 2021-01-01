@@ -44,13 +44,13 @@ void affichageDeTousLesMots(Joueurs* j, int hit) {
  * @param[in] hit le nombre de joueurs/ le nombre de fois où le programme rencontre le "*"
  * @pre vide pour l'instant ? on verra
  */
-void initialisationDesJoueurs(TabJoueurs& j, unsigned int nbj) {
-	j = new Joueurs[1];
+void initialisationDesJoueurs(TabJoueurs& tabj, unsigned int nbj) {
+	tabj.j = new Joueurs[1];
 }
 
-void detruireJoueurs(Joueurs*& j) {
-	delete[] j;
-	j = NULL;
+void detruireJoueurs(TabJoueurs& j) {
+	delete[] j.j;
+	j.j = NULL;
 
 }
 
@@ -61,24 +61,24 @@ void detruireJoueurs(Joueurs*& j) {
  * @param[in] nbjoueurs le nombre de joueurs avant de l'incrementer
  * @pre vide pour l'instant ? on verra
  */
-void ajouterJoueurs(Joueurs *j, unsigned int& nbjoueurs) {
+void ajouterJoueurs(TabJoueurs& tabj, unsigned int& nbjoueurs) {
 
 	unsigned int newT = ++nbjoueurs;
-	Joueurs* newTaille = new Joueurs[newT];
+	tabj.j newTaille = new Joueurs[newT];
 
 	for (int i = 0; i < nbjoueurs; i++) {
-		newTaille[i] = j[i];
+		newTaille[i] = tabj.j[i];
 	}
 
-	delete[] j;
-	j = newTaille;
+	delete[] tabj.j;
+	tabj.j = newTaille;
 	nbjoueurs++;
 }
 
 int main() {
 	Item entree;
 	//Joueurs* j;
-	TabJoueurs j;
+	TabJoueurs tabj;
 	unsigned int nbjoueurs = 0; //nombre de joueurs reel
 	unsigned int cpt = 0; //nombre de mots reel
 	unsigned int etoile = 0;
@@ -86,28 +86,28 @@ int main() {
 	//	initialisation(j[i]);
 	//	initialiser(j[i].conteneurDesMots, 10, 2);
 	//}
-	initialisationDesJoueurs(j, nbjoueurs);
-	initialisation(j.j[nbjoueurs]);
-	initialiser(j[nbjoueurs].conteneurDesMots, 10, 2);
+	initialisationDesJoueurs(tabj, nbjoueurs);
+	initialisation(tabj.j[nbjoueurs]);
+	initialiser(tabj.j[nbjoueurs].conteneurDesMots, 10, 2);
 	do {
 		cin >> entree;
-		j[nbjoueurs].nbdemot++;
+		tabj.j[nbjoueurs].nbdemot++;
 		if ((strcmp(entree, "*") == 0)) {
 			etoile++;
 			if (etoile == 2) {
 				//on sort 
-				j[nbjoueurs].nbdemot--;
+				tabj.j[nbjoueurs].nbdemot--;
 				break;
 			}
 
-			j[nbjoueurs].nbdemot--;
-			ajouterJoueurs(j, nbjoueurs);
+			tabj.j[nbjoueurs].nbdemot--;
+			ajouterJoueurs(tabj, nbjoueurs);
 			cpt = 0;
 			continue;
 
 		}
-		triUnique(j[nbjoueurs].conteneurDesMots, j[nbjoueurs], entree, j[nbjoueurs].nbdemot, etoile);
-		calcul_de_points(j[nbjoueurs]);
+		triUnique(tabj.j[nbjoueurs].conteneurDesMots, tabj.j[nbjoueurs], entree, tabj.j[nbjoueurs].nbdemot, etoile);
+		calcul_de_points(tabj.j[nbjoueurs]);
 		cpt++;
 
 	} while (true);
@@ -115,8 +115,8 @@ int main() {
 
 
 	//cout << "################################ AFFICHAGE FINAL ################################" << endl;
-	triAlpha(j[0].conteneurDesMots, j[0]);
-	triAlpha(j[1].conteneurDesMots, j[1]);
+	triAlpha(tabj.j[0].conteneurDesMots, tabj.j[0]);
+	triAlpha(tabj.j[1].conteneurDesMots, tabj.j[1]);
 	//affichageDeTousLesMots(j, hit);
 	comparaison(j, nbjoueurs);
 	std::cout << "*" << endl;
