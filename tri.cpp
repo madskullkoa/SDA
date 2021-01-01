@@ -13,7 +13,7 @@ using namespace std;
  * @brief enleves les doublons
  * @param[in] c le conteneur des mots
  */
-void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt) {
+void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt, unsigned int& etoile) {
 	
 	Mot tmp;
 	strcpy(tmp, entree);
@@ -28,6 +28,7 @@ void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt) {
 		}
 	}
 	ecrire(c, cpt, tmp);
+	etoile--;
 	//cout << "MOT ENREGISTE : " << tmp << endl;
 	//cout << "########################################################" << endl;
 	//cout << "# Affichage des mots jusqu'ici" << endl;

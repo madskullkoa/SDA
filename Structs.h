@@ -23,3 +23,8 @@ typedef struct {
 	int total;
 	ConteneurTDE conteneurDesMots;
 }Joueurs;
+
+
+typedef struct {
+	Joueurs* j;
+}TabJoueurs;
