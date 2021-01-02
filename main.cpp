@@ -14,6 +14,9 @@
 #include "tri.h"
 using namespace std;
 
+
+//02/01/2021 19H21
+
 /**
  * @brief Affichage de toute les listes
  * @see detruire, la liste est à désallouer en fin d'utilisation.
