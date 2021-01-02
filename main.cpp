@@ -66,9 +66,10 @@ void detruireJoueurs(TabJoueurs& j) {
  */
 void ajouterJoueurs(TabJoueurs& tabj, unsigned int& nbjoueurs) {
 
-	unsigned int newT = nbjoueurs+1;
-	TabJoueurs newTaille = new Joueurs[newT+1];
-
+	unsigned int newT = nbjoueurs + 1;
+	TabJoueurs newTaille = new Joueurs[newT];
+	initialisation(newTaille[newT]);
+	initialiser(newTaille[newT].conteneurDesMots, 10, 2);
 	for (int i = 0; i < nbjoueurs; i++) {
 		newTaille[i] = tabj[i];
 	}
@@ -82,35 +83,36 @@ int main() {
 	Item entree;
 	//Joueurs* j;
 	TabJoueurs tabj;
-	unsigned int nbjoueurs = 0; //nombre de joueurs reel
+	unsigned int nbjoueurs = 1; //nombre de joueurs reel
 	unsigned int cpt = 0; //nombre de mots reel
 	unsigned int etoile = 0;
 	//for (unsigned int i = 0; i < 4; ++i) {
 	//	initialisation(j[i]);
 	//	initialiser(j[i].conteneurDesMots, 10, 2);
 	//}
+
 	initialisationDesJoueurs(tabj, nbjoueurs);
-	initialisation(tabj[nbjoueurs]);
-	initialiser(tabj[nbjoueurs].conteneurDesMots, 10, 2);
+	initialisation(tabj[nbjoueurs - 1]);
+	initialiser(tabj[nbjoueurs - 1].conteneurDesMots, 10, 2);
 	do {
 		cin >> entree;
-		tabj[nbjoueurs].nbdemot++;
+		tabj[nbjoueurs - 1].nbdemot++;
 		if ((strcmp(entree, "*") == 0)) {
 			etoile++;
 			if (etoile == 2) {
 				//on sort 
-				tabj[nbjoueurs].nbdemot--;
+				tabj[nbjoueurs - 1].nbdemot--;
 				break;
 			}
 
-			tabj[nbjoueurs].nbdemot--;
+			tabj[nbjoueurs - 1].nbdemot--;
 			ajouterJoueurs(tabj, nbjoueurs);
 			cpt = 0;
 			continue;
 
 		}
-		triUnique(tabj[nbjoueurs].conteneurDesMots, tabj[nbjoueurs], entree, tabj[nbjoueurs].nbdemot, etoile);
-		calcul_de_points(tabj[nbjoueurs]);
+		triUnique(tabj[nbjoueurs - 1].conteneurDesMots, tabj[nbjoueurs - 1], entree, tabj[nbjoueurs - 1].nbdemot, etoile);
+		calcul_de_points(tabj[nbjoueurs - 1]);
 
 		cpt++;
 
