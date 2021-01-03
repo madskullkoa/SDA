@@ -80,7 +80,7 @@ void ajouterJoueurs(TabJoueurs& tabj, unsigned int& nbjoueurs, unsigned int& tes
 }
 
 int main() {
-	Item entree;
+	Item entree; // de deux cases
 	//Joueurs* j;
 	unsigned int test = 1;
 	TabJoueurs tabj;
@@ -96,9 +96,13 @@ int main() {
 	initialisation(tabj[nbjoueurs]);
 	initialiser(tabj[nbjoueurs].conteneurDesMots, 10, 2);
 	do {
-		cin >> entree;
+		cin >> entree[etoile];
 		tabj[nbjoueurs].nbdemot++;
 		if ((strcmp(entree, "*") == 0)) {
+        /*if(strcmp(entree[etoile],entree[etoile+1])!=0){ //S'ils sont differents, bah etoile --
+      
+            etoile--;
+        }*/
 			etoile++;
 
 
