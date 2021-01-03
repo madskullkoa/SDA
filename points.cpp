@@ -12,6 +12,7 @@ using namespace std;
 
 void initialisation(Joueurs& j) {
 	j.nbdemot = 0;
+	j.total = 0;
 	//j.TabDesMotsEntres = new Item[30];
 	j.pointparmot = new int[30];
 

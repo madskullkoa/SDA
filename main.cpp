@@ -48,7 +48,7 @@ void affichageDeTousLesMots(Joueurs* j, int hit) {
  * @pre vide pour l'instant ? on verra
  */
 void initialisationDesJoueurs(TabJoueurs& tabj, unsigned int nbj) {
-	tabj = new Joueurs[1];
+	tabj = new Joueurs[0];
 }
 
 void detruireJoueurs(TabJoueurs& j) {
@@ -83,7 +83,7 @@ int main() {
 	Item entree;
 	//Joueurs* j;
 	TabJoueurs tabj;
-	unsigned int nbjoueurs = 1; //nombre de joueurs reel
+	unsigned int nbjoueurs = 0; //nombre de joueurs reel
 	unsigned int cpt = 0; //nombre de mots reel
 	unsigned int etoile = 0;
 	//for (unsigned int i = 0; i < 4; ++i) {
@@ -92,8 +92,8 @@ int main() {
 	//}
 
 	initialisationDesJoueurs(tabj, nbjoueurs);
-	initialisation(tabj[nbjoueurs - 1]);
-	initialiser(tabj[nbjoueurs - 1].conteneurDesMots, 10, 2);
+	initialisation(tabj[nbjoueurs]);
+	initialiser(tabj[nbjoueurs].conteneurDesMots, 10, 2);
 	do {
 		cin >> entree;
 		tabj[nbjoueurs - 1].nbdemot++;
@@ -101,18 +101,18 @@ int main() {
 			etoile++;
 			if (etoile == 2) {
 				//on sort 
-				tabj[nbjoueurs - 1].nbdemot--;
+				tabj[nbjoueurs].nbdemot--;
 				break;
 			}
 
-			tabj[nbjoueurs - 1].nbdemot--;
+			tabj[nbjoueurs].nbdemot--;
 			ajouterJoueurs(tabj, nbjoueurs);
 			cpt = 0;
 			continue;
 
 		}
-		triUnique(tabj[nbjoueurs - 1].conteneurDesMots, tabj[nbjoueurs - 1], entree, tabj[nbjoueurs - 1].nbdemot, etoile);
-		calcul_de_points(tabj[nbjoueurs - 1]);
+		triUnique(tabj[nbjoueurs].conteneurDesMots, tabj[nbjoueurs], entree, tabj[nbjoueurs].nbdemot, etoile);
+		//calcul_de_points(tabj[nbjoueurs - 1]);
 
 		cpt++;
 
