@@ -27,7 +27,7 @@ void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt, unsigned int& 
 			return;
 		}
 	}
-	ecrire(c, cpt, tmp);
+	ecrire(c, cpt - 1, tmp);
 	etoilesdaffilee = 0;
 	//cout << "MOT ENREGISTE : " << tmp << endl;
 	//cout << "########################################################" << endl;
@@ -51,41 +51,51 @@ dans la première ;*/
 void comparaison(Joueurs* j, int nbjoueurs) {
 
 	int* tabIndices;
+	Mot* mots;
+
 	bool Unique;
 	int hit = 0;
 	tabIndices = new int[300];
-	/*Pour i=0, i allant au max des jouers,i++
-		  pour k - i - 1, k allant au max des jouers,k++
-				comparer jouer i à jouer k
-				  Si c pareil c'est que les mots sont egaux
+	mots = new Mot[300];
 
-  */
-	for (int joueur1 = 0; joueur1 <= nbjoueurs; joueur1++) {
-		for (int joueur2 = 1; joueur2 <= nbjoueurs; joueur2++) {
-			for (unsigned int k = 0; k <= j[joueur2].nbdemot; ++k) {//la liste de mots du gars
-				for (unsigned int i = 1; i <= j[joueur1].nbdemot; ++i) { //le dico ou la liste de l'autre gars
+	for (int cpt1 = 0; cpt1 < nbjoueurs; cpt1++) {
+		for (int cpt2 = cpt1+1; cpt2 < nbjoueurs; cpt2++) {
+			for (unsigned int k = 0; k < j[cpt1].nbdemot; ++k) {//la liste de mots de cpt1
+				for (unsigned int i = 0; i < j[cpt2].nbdemot; ++i) { //la liste de mot de cpt2
 					Unique = 1;
-					if (strcmp(j[joueur2].conteneurDesMots.tab[k], j[joueur1].conteneurDesMots.tab[i]) == 0) {
+					//cout << "je compare " << j[cpt1].conteneurDesMots.tab[k] << " avec " << j[cpt2].conteneurDesMots.tab[i] << endl;
+					if (strcmp(j[cpt1].conteneurDesMots.tab[k], j[cpt2].conteneurDesMots.tab[i]) == 0) {
+						//cout << "ils sont identiques" << endl;
 						Unique = 0;
 						break;
 					}
 				}
 				if (Unique == 0) {
 					tabIndices[hit] = k;
+
+					//cout << "j'entre le mot " << j[cpt1].conteneurDesMots.tab[k] << endl;
+					strcpy(mots[hit], j[cpt1].conteneurDesMots.tab[k]);
 					hit++;
 				}
 			}
 		}
 	}
 
-	for (int i = 0; i < hit; ++i) {
+	/*for (int k = 0; k < nbjoueurs; k++) {
+		cout << "joueur " << k << endl;
 
-		cout << j[1].conteneurDesMots.tab[tabIndices[i]] << endl;
+		for (int i = 0; i < hit; ++i) {
 
+			cout << j[k].conteneurDesMots.tab[tabIndices[i]] << endl;
+
+		}
+	}*/
+
+	for (int i = 0; i < hit; i++) {
+		cout << mots[i] << endl;
 	}
 
-
-
+	delete[] mots;
 	delete[] tabIndices;
 }
 /**
@@ -101,7 +111,7 @@ void triAlpha(ConteneurTDE& c, Joueurs& jr) {
 	for (int i = 0; i < jr.nbdemot; i++) {
 		//tmp = new char[30];
 
-		for (int j = 1; j <= jr.nbdemot - i - 1; j++) {
+		for (int j = 0; j < jr.nbdemot - i - 1; j++) {
 			if (strcmp(c.tab[j], c.tab[j + 1]) < 0) {
 
 			}

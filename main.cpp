@@ -31,8 +31,8 @@ void affichageDeTousLesMots(Joueurs* j, int hit) {
 	}
 
 	for (int k = 0; k < hit; k++) {
-		//cout << "############### joueur " << k + 1 << " ###############" << endl;
-		for (int i = 1; i <= j[k].nbdemot; i++) {
+		cout << "############### joueur " << k + 1 << " ###############" << endl;
+		for (int i = 0; i < j[k].nbdemot; i++) {
 			std::cout << j[k].conteneurDesMots.tab[i] << endl;
 		}
 	}
@@ -128,9 +128,14 @@ int main() {
 
 
 	//cout << "################################ AFFICHAGE FINAL ################################" << endl;
-	triAlpha(tabj[0].conteneurDesMots, tabj[0]);
-	triAlpha(tabj[1].conteneurDesMots, tabj[1]);
-	//affichageDeTousLesMots(j, hit);
+
+
+
+	for (int i = 0; i < nbjoueurs; i++) {
+		triAlpha(tabj[i].conteneurDesMots, tabj[i]);
+	}
+
+	//affichageDeTousLesMots(tabj, nbjoueurs);
 	comparaison(tabj, nbjoueurs);
 	std::cout << "*" << endl;
 }
