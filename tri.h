@@ -14,7 +14,7 @@ using namespace std;
  * @brief enleves les doublons
  * @param[in] c le conteneur des mots
  */
-void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt, unsigned int& test);
+void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt, unsigned int& etoilesdaffilee);
 
 /**
  * @brief Compare deux listes

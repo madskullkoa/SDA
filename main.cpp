@@ -64,7 +64,7 @@ void detruireJoueurs(TabJoueurs& j) {
  * @param[in] nbjoueurs le nombre de joueurs avant de l'incrementer
  * @pre vide pour l'instant ? on verra
  */
-void ajouterJoueurs(TabJoueurs& tabj, unsigned int& nbjoueurs, unsigned int& test) {
+void ajouterJoueurs(TabJoueurs& tabj, unsigned int& nbjoueurs) {
 
 	unsigned int newT = nbjoueurs + 1;//0+1=1
 	TabJoueurs newTaille = new Joueurs[newT + 1];//new Joueurs[2]; -> 0, 1 => 2 elements
@@ -82,7 +82,7 @@ void ajouterJoueurs(TabJoueurs& tabj, unsigned int& nbjoueurs, unsigned int& tes
 int main() {
 	Item entree; // de deux cases
 	//Joueurs* j;
-	unsigned int test = 1;
+	unsigned int etoilesdaffilees = 0;
 	TabJoueurs tabj;
 	unsigned int nbjoueurs = 0; //nombre de joueurs reel
 	unsigned int cpt = 0; //nombre de mots reel
@@ -96,29 +96,27 @@ int main() {
 	initialisation(tabj[nbjoueurs]);
 	initialiser(tabj[nbjoueurs].conteneurDesMots, 10, 2);
 	do {
-		cin >> entree[etoile];
+		cin >> entree;
 		tabj[nbjoueurs].nbdemot++;
 		if ((strcmp(entree, "*") == 0)) {
-        /*if(strcmp(entree[etoile],entree[etoile+1])!=0){ //S'ils sont differents, bah etoile --
-      
-            etoile--;
-        }*/
+
 			etoile++;
+			etoilesdaffilees++;
 
 
 			tabj[nbjoueurs].nbdemot--;
-			ajouterJoueurs(tabj, nbjoueurs, test);
-			test = etoile + test;
-			if (etoile == 2) {
+			if (etoilesdaffilees == 2) {
 				//on sort
 				tabj[nbjoueurs].nbdemot--;
 				break;
 			}
+			ajouterJoueurs(tabj, nbjoueurs);
+
 			cpt = 0;
 			continue;
 
 		}
-		triUnique(tabj[nbjoueurs].conteneurDesMots, tabj[nbjoueurs], entree, tabj[nbjoueurs].nbdemot, test);
+		triUnique(tabj[nbjoueurs].conteneurDesMots, tabj[nbjoueurs], entree, tabj[nbjoueurs].nbdemot, etoilesdaffilees);
 
 
 		//calcul_de_points(tabj[nbjoueurs - 1]);
