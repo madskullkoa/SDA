@@ -18,9 +18,9 @@ typedef struct {
 }Liste;
 
 typedef struct {
-	int* pointparmot;
-	int nbdemot;
-	int total;
+	unsigned int* pointparmot;
+	unsigned int nbdemot;
+	unsigned int total;
 	ConteneurTDE conteneurDesMots;
 }Joueurs;
 

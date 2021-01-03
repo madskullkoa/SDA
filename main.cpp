@@ -48,7 +48,7 @@ void affichageDeTousLesMots(Joueurs* j, int hit) {
  * @pre vide pour l'instant ? on verra
  */
 void initialisationDesJoueurs(TabJoueurs& tabj, unsigned int nbj) {
-	tabj = new Joueurs[0];
+	tabj = new Joueurs[1];
 }
 
 void detruireJoueurs(TabJoueurs& j) {
@@ -64,13 +64,13 @@ void detruireJoueurs(TabJoueurs& j) {
  * @param[in] nbjoueurs le nombre de joueurs avant de l'incrementer
  * @pre vide pour l'instant ? on verra
  */
-void ajouterJoueurs(TabJoueurs& tabj, unsigned int& nbjoueurs) {
+void ajouterJoueurs(TabJoueurs& tabj, unsigned int& nbjoueurs, unsigned int& test) {
 
-	unsigned int newT = nbjoueurs + 1;
-	TabJoueurs newTaille = new Joueurs[newT];
-	initialisation(newTaille[newT]);
+	unsigned int newT = nbjoueurs + 1;//0+1=1
+	TabJoueurs newTaille = new Joueurs[newT + 1];//new Joueurs[2]; -> 0, 1 => 2 elements
+	initialisation(newTaille[newT]); //initialise à l'indice prochain (joueur pro)
 	initialiser(newTaille[newT].conteneurDesMots, 10, 2);
-	for (int i = 0; i < nbjoueurs; i++) {
+	for (int i = 0; i <= nbjoueurs; i++) {
 		newTaille[i] = tabj[i];
 	}
 
@@ -82,6 +82,7 @@ void ajouterJoueurs(TabJoueurs& tabj, unsigned int& nbjoueurs) {
 int main() {
 	Item entree;
 	//Joueurs* j;
+	unsigned int test = 1;
 	TabJoueurs tabj;
 	unsigned int nbjoueurs = 0; //nombre de joueurs reel
 	unsigned int cpt = 0; //nombre de mots reel
@@ -96,22 +97,26 @@ int main() {
 	initialiser(tabj[nbjoueurs].conteneurDesMots, 10, 2);
 	do {
 		cin >> entree;
-		tabj[nbjoueurs - 1].nbdemot++;
+		tabj[nbjoueurs].nbdemot++;
 		if ((strcmp(entree, "*") == 0)) {
 			etoile++;
+
+
+			tabj[nbjoueurs].nbdemot--;
+			ajouterJoueurs(tabj, nbjoueurs, test);
+			test = etoile + test;
 			if (etoile == 2) {
-				//on sort 
+				//on sort
 				tabj[nbjoueurs].nbdemot--;
 				break;
 			}
-
-			tabj[nbjoueurs].nbdemot--;
-			ajouterJoueurs(tabj, nbjoueurs);
 			cpt = 0;
 			continue;
 
 		}
-		triUnique(tabj[nbjoueurs].conteneurDesMots, tabj[nbjoueurs], entree, tabj[nbjoueurs].nbdemot, etoile);
+		triUnique(tabj[nbjoueurs].conteneurDesMots, tabj[nbjoueurs], entree, tabj[nbjoueurs].nbdemot, test);
+
+
 		//calcul_de_points(tabj[nbjoueurs - 1]);
 
 		cpt++;
