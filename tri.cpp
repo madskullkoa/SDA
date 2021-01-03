@@ -14,7 +14,7 @@ using namespace std;
  * @param[in] c le conteneur des mots
  */
 void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt, unsigned int& etoilesdaffilee) {
-	
+
 	Mot tmp;
 	strcpy(tmp, entree);
 	for (int i = 0; i <= cpt; ++i) {
@@ -45,7 +45,7 @@ void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt, unsigned int& 
  * @brief Compare deux listes
  * @param[in] c le conteneur des mots
  * @param[in] j La structure Joueurs
- */	
+ */
  /*afficher les mots de la seconde liste n’apparaissant pas
 dans la première ;*/
 void comparaison(Joueurs* j, int nbjoueurs) {
@@ -53,21 +53,31 @@ void comparaison(Joueurs* j, int nbjoueurs) {
 	int* tabIndices;
 	bool Unique;
 	int hit = 0;
-	tabIndices = new int[j[1].nbdemot];
+	tabIndices = new int[300];
+	/*Pour i=0, i allant au max des jouers,i++
+		  pour k - i - 1, k allant au max des jouers,k++
+				comparer jouer i à jouer k
+				  Si c pareil c'est que les mots sont egaux
 
-	for (unsigned int k = 1; k <= j[1].nbdemot; ++k) {//la liste de mots du gars
-		for (unsigned int i = 1; i <= j[0].nbdemot; ++i) { //le dico
-			Unique = 1;
-			if (strcmp(j[1].conteneurDesMots.tab[k], j[0].conteneurDesMots.tab[i]) == 0) {
-				Unique = 0;
-				break;
+  */
+	for (int joueur1 = 0; joueur1 <= nbjoueurs; joueur1++) {
+		for (int joueur2 = 1; joueur2 <= nbjoueurs; joueur2++) {
+			for (unsigned int k = 0; k <= j[joueur2].nbdemot; ++k) {//la liste de mots du gars
+				for (unsigned int i = 1; i <= j[joueur1].nbdemot; ++i) { //le dico ou la liste de l'autre gars
+					Unique = 1;
+					if (strcmp(j[joueur2].conteneurDesMots.tab[k], j[joueur1].conteneurDesMots.tab[i]) == 0) {
+						Unique = 0;
+						break;
+					}
+				}
+				if (Unique == 0) {
+					tabIndices[hit] = k;
+					hit++;
+				}
 			}
 		}
-		if (Unique == 0) {
-			tabIndices[hit] = k;
-			hit++;
-		}
 	}
+
 	for (int i = 0; i < hit; ++i) {
 
 		cout << j[1].conteneurDesMots.tab[tabIndices[i]] << endl;
