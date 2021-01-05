@@ -44,10 +44,11 @@ void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt, unsigned int& 
 bool triUniqueTabMot(Mot entre, Mot* tabMots, int& nb){
 	for(int i = 0; i<nb;i++ ){
 		if(strcmp(entre, tabMots[i])){
-			nb--;
+			//nb--;
 			return 0;
 		}
 	}
+	nb++;
 	return 1;
 
 }
