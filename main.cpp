@@ -13,10 +13,11 @@
 #include "ConteneurTDE.h"
 #include "points.h"
 #include "tri.h"
+#include "Joueurs.h"
 using namespace std;
 //Pour calculer le temps d'execution
 double getTime() {
- 	clock_t t = clock();
+	clock_t t = clock();
 	if (t == (clock_t)-1)
 		return 0.;
 	else
@@ -48,48 +49,10 @@ void affichageDeTousLesMots(Joueurs* j, int hit) {
 	std::cout << "*" << endl;
 }
 
-/**
- * @brief Initialise le tableau de joueur
- * @see detruireJoueurs, Pour detruire les joueurs
- * @param[in] j le conteneur
- * @param[in] hit le nombre de joueurs/ le nombre de fois où le programme rencontre le "*"
- * @pre vide pour l'instant ? on verra
- */
-void initialisationDesJoueurs(TabJoueurs& tabj, unsigned int nbj) {
-	tabj = new Joueurs[1];
-}
-
-void detruireJoueurs(TabJoueurs& j) {
-	delete[] j;
-	j = NULL;
-
-}
-
-
-/**
- * @brief Ajoute uniquement un joueur
- * @param[in] j le conteneur
- * @param[in] nbjoueurs le nombre de joueurs avant de l'incrementer
- * @pre vide pour l'instant ? on verra
- */
-void ajouterJoueurs(TabJoueurs& tabj, unsigned int& nbjoueurs) {
-
-	unsigned int newT = nbjoueurs + 1;//0+1=1
-	TabJoueurs newTaille = new Joueurs[newT + 1];//new Joueurs[2]; -> 0, 1 => 2 elements
-	initialisation(newTaille[newT]); //initialise à l'indice prochain (joueur pro)
-	initialiser(newTaille[newT].conteneurDesMots, 10, 2);
-	for (int i = 0; i <= nbjoueurs; i++) {
-		newTaille[i] = tabj[i];
-	}
-
-	delete[] tabj;
-	tabj = newTaille;
-	nbjoueurs++;
-}
 
 int main() {
-  double time1, time2;
-  time1 = getTime();
+	double time1, time2;
+	time1 = getTime();
 	Item entree; // de deux cases
 	//Joueurs* j;
 	unsigned int etoilesdaffilees = 0;
@@ -148,7 +111,7 @@ int main() {
 	//affichageDeTousLesMots(tabj, nbjoueurs);
 	comparaison(tabj, nbjoueurs);
 	std::cout << "*" << endl;
-  time2 = getTime();
-  cout << "Temps d'exécution du quickSort : " << time2 - time1 
-	     << " s." << endl;
+	time2 = getTime();
+	cout << "Temps d'exécution du quickSort : " << time2 - time1
+		<< " s." << endl;
 }
