@@ -4,6 +4,7 @@
   * @brief Types : co�t-m�moire et domaine de variation
   */
 #pragma warning(disable:4996)
+#include <ctime> // pour clock et CLOCKS_PER_SEC
 #include <iostream>
 #include <cstring>
 #include <cassert>
@@ -13,7 +14,14 @@
 #include "points.h"
 #include "tri.h"
 using namespace std;
-
+//Pour calculer le temps d'execution
+double getTime() {
+ 	clock_t t = clock();
+	if (t == (clock_t)-1)
+		return 0.;
+	else
+		return (double)t / CLOCKS_PER_SEC;
+}
 
 //02/01/2021 19H21
 
@@ -80,6 +88,8 @@ void ajouterJoueurs(TabJoueurs& tabj, unsigned int& nbjoueurs) {
 }
 
 int main() {
+  double time1, time2;
+  time1 = getTime();
 	Item entree; // de deux cases
 	//Joueurs* j;
 	unsigned int etoilesdaffilees = 0;
@@ -138,4 +148,7 @@ int main() {
 	//affichageDeTousLesMots(tabj, nbjoueurs);
 	comparaison(tabj, nbjoueurs);
 	std::cout << "*" << endl;
+  time2 = getTime();
+  cout << "Temps d'exécution du quickSort : " << time2 - time1 
+	     << " s." << endl;
 }
