@@ -41,6 +41,18 @@ void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt, unsigned int& 
 }
 
 
+bool triUniqueTabMot(Mot entre, Mot* tabMots, int& nb){
+	for(int i = 0; i<nb;i++ ){
+		if(strcmp(entre, tabMots[i])){
+			nb--;
+			return 0;
+		}
+	}
+	return 1;
+
+}
+
+
 /**
  * @brief Compare deux listes
  * @param[in] c le conteneur des mots
@@ -74,8 +86,14 @@ void comparaison(Joueurs* j, int nbjoueurs) {
 					tabIndices[hit] = k;
 
 					//cout << "j'entre le mot " << j[cpt1].conteneurDesMots.tab[k] << endl;
-					strcpy(mots[hit], j[cpt1].conteneurDesMots.tab[k]);
-					hit++;
+
+					
+					bool Motunique = triUniqueTabMot(j[cpt1].conteneurDesMots.tab[k], mots, hit);
+					if(Motunique == 1){
+						strcpy(mots[hit], j[cpt1].conteneurDesMots.tab[k]);
+					}
+
+					
 				}
 			}
 		}
