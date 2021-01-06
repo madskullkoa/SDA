@@ -24,6 +24,13 @@ double getTime() {
 		return (double)t / CLOCKS_PER_SEC;
 }
 
+typedef struct {
+	bool plateauVof[4][4];
+	char plateauMots[4][4];
+	int x;
+	int y;
+}Coord;
+
 //02/01/2021 19H21
 
 /**
@@ -48,11 +55,43 @@ void affichageDeTousLesMots(Joueurs* j, int hit) {
 
 	std::cout << "*" << endl;
 }
+void initialiserUnPlateau(Coord& c) {
+	Mot entre;
+	
+	char alphabet[26] = "abcdefghijklmopqrstuvwxyz";
+	int indice;
+	for (int i = 0; i < 4; ++i) { // [i][]
+		cin >> entre;
+
+			for (int k = 0; k < 4; k++) {  // [i][k]
+				c.plateauVof[i][k] = false;
+
+				c.plateauMots[i][k] = entre[k];
+			}
+		
+	}
+}
+
+
+
+
+//bool sousrecherche(Mot String, int pos, Coord& Coord) {
+//	if (pos >= strlen(String)) {
+//		return true;
+//	}
+//	if (Coord.plateauMots[Coord.x][Coord.y]==String[pos]) {
+//		return false;
+//	}
+//}
 
 
 int main() {
+
 	double time1, time2;
 	time1 = getTime();
+	Coord c;
+	
+
 	Item entree; // de deux cases
 	//Joueurs* j;
 	unsigned int etoilesdaffilees = 0;
@@ -69,6 +108,8 @@ int main() {
 	initialisation(tabj[nbjoueurs]);
 	initialiser(tabj[nbjoueurs].conteneurDesMots, 10, 2);
 	do {
+		
+		initialiserUnPlateau(c);
 		cin >> entree;
 		tabj[nbjoueurs].nbdemot++;
 		if ((strcmp(entree, "*") == 0)) {
