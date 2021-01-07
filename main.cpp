@@ -105,7 +105,7 @@ void verification(Mot entre, Coord& c, Plateau& p) {
 		int haut=c.x[i]+1;
 		int bas= c.x[i] - 1;
 		int cotes[4] = { {droite},{gauche},{haut},{bas} };
-
+			
 			i++;
 			if (p.plateauVof[c.x[i]][droite] != true) {  // True si je suis deja passé, donc ici different
 				if (entre[1] == p.plateauMots[c.x[i]][droite]) {
@@ -152,12 +152,16 @@ int main() {
 	initialisationDesJoueurs(tabj, nbjoueurs);
 	initialisation(tabj[nbjoueurs]);
 	initialiser(tabj[nbjoueurs].conteneurDesMots, 10, 2);
-
-	//initialiserUnPlateau(p);
 	do {
+		initialiserUnPlateau(p);
+		do {
+			
 
+			cin >> entree;
 
-		cin >> entree;
+			c = positionpremier(entree, p);
+			verification(entree, c, p);
+		} while (true);
 		tabj[nbjoueurs].nbdemot++;
 		if ((strcmp(entree, "*") == 0)) {
 
@@ -176,25 +180,15 @@ int main() {
 			cpt = 0;
 			continue;
 
-
-			//c = positionpremier(entree, p);
-		//	verification(entree, c, p);
 		}
+		triUnique(tabj[nbjoueurs].conteneurDesMots, tabj[nbjoueurs], entree, tabj[nbjoueurs].nbdemot, etoilesdaffilees);
+
+
+		//calcul_de_points(tabj[nbjoueurs - 1]);
+
+		cpt++;
+
 	} while (true);
-
-
-
-
-
-
-	triUnique(tabj[nbjoueurs].conteneurDesMots, tabj[nbjoueurs], entree, tabj[nbjoueurs].nbdemot, etoilesdaffilees);
-
-
-	//calcul_de_points(tabj[nbjoueurs - 1]);
-
-	cpt++;
-
-
 
 
 
