@@ -23,7 +23,7 @@ double getTime() {
 	else
 		return (double)t / CLOCKS_PER_SEC;
 }
-
+/*
 typedef struct {
 	bool plateauVof[4][4];
 	char plateauMots[4][4];
@@ -31,7 +31,7 @@ typedef struct {
 typedef struct {
 	int x[5];
 	int y[5];
-}Coord;
+}Coord;*/
 
 //02/01/2021 19H21
 
@@ -57,7 +57,7 @@ void affichageDeTousLesMots(Joueurs* j, int hit) {
 
 	std::cout << "*" << endl;
 }
-void initialiserUnPlateau(Plateau& c) {
+/*void initialiserUnPlateau(Plateau& c) {
 	Item entre;
 	int indice;
 	for (int i = 0; i < 4; ++i) { // [i][]
@@ -73,7 +73,8 @@ void initialiserUnPlateau(Plateau& c) {
 			}
 			cout << "]"<< endl;
 	}
-}
+}*/
+/*
 Coord positionpremier(Item entre, Plateau& c) {
 	int cpt = 0;
 	Coord locale;
@@ -94,6 +95,8 @@ Coord positionpremier(Item entre, Plateau& c) {
 	}
 	return locale;
 }
+*/
+/*
 void verification(Mot entre, Coord& c, Plateau& p) {
 	int i;
 	for (i = 0; i < 5;) {
@@ -115,7 +118,7 @@ void verification(Mot entre, Coord& c, Plateau& p) {
 	}
 }
 
-
+*/
 
 //bool sousrecherche(Mot String, int pos, Coord& Coord) {
 //	if (pos >= strlen(String)) {
@@ -131,8 +134,8 @@ int main() {
 
 	double time1, time2;
 	time1 = getTime();
-	Plateau p;
-	Coord c;
+	//Plateau p;
+	//Coord c;
 
 	Item entree; // de deux cases
 	//Joueurs* j;
