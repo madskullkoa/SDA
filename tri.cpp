@@ -19,35 +19,22 @@ void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt, unsigned int& 
 	strcpy(tmp, entree);
 	for (int i = 0; i <= cpt; ++i) {
 		if (strcmp(tmp, c.tab[i]) == 0) {
-			//cout << "Votre mot : " << tmp << " existe deja dans la base -> " << entree << endl;
-			//cout << "la gueule du mot d'avant : " << c.tab[i - 1] << endl;
-			//cout << "la gueule qu'il a : " << c.tab[i] << endl;
-			//cout << "la gueule du mot d'apres : " << c.tab[i + 1] << endl;
+
 			j.nbdemot--;
 			return;
 		}
 	}
 	ecrire(c, cpt - 1, tmp);
 	etoilesdaffilee = 0;
-	//cout << "MOT ENREGISTE : " << tmp << endl;
-	//cout << "########################################################" << endl;
-	//cout << "# Affichage des mots jusqu'ici" << endl;
-	//for (int i = 1; i <= j.nbdemot; i++) {
-		//cout << "# " << c.tab[i] << endl;
-	//}
-	//cout << "########################################################" << endl;
-
-
 }
 
 
-bool triUniqueTabMot(Mot entre, Mot* tabMots, int& nb){
-	for(int i = 0; i<nb;i++ ){
-		if(strcmp(entre, tabMots[i]) == 0){
-			//nb--;
+bool triUniqueTabMot(Mot entre, Mot* tabMots, int& nb) {
+	for (int i = 0; i < nb; i++) {
+		if (strcmp(entre, tabMots[i]) == 0) {
 			return 0;
 		}
-	}	
+	}
 	return 1;
 }
 
@@ -71,7 +58,7 @@ void comparaison(Joueurs* j, int nbjoueurs) {
 	mots = new Mot[300];
 
 	for (int cpt1 = 0; cpt1 < nbjoueurs; cpt1++) {
-		for (int cpt2 = cpt1+1; cpt2 < nbjoueurs; cpt2++) {
+		for (int cpt2 = cpt1 + 1; cpt2 < nbjoueurs; cpt2++) {
 			for (unsigned int k = 0; k < j[cpt1].nbdemot; ++k) {//la liste de mots de cpt1
 				for (unsigned int i = 0; i < j[cpt2].nbdemot; ++i) { //la liste de mot de cpt2
 					Unique = 1;
@@ -87,14 +74,14 @@ void comparaison(Joueurs* j, int nbjoueurs) {
 
 					//cout << "j'entre le mot " << j[cpt1].conteneurDesMots.tab[k] << endl;
 
-					
+
 					bool Motunique = triUniqueTabMot(j[cpt1].conteneurDesMots.tab[k], mots, hit);
-					if(Motunique == 1){
+					if (Motunique == 1) {
 						strcpy(mots[hit], j[cpt1].conteneurDesMots.tab[k]);
 						hit++;
 					}
 
-					
+
 				}
 			}
 		}
@@ -109,7 +96,7 @@ void comparaison(Joueurs* j, int nbjoueurs) {
 
 		}
 	}*/
-	
+
 	triAlpha(mots, hit);
 
 	for (int i = 0; i < hit; i++) {
@@ -127,35 +114,35 @@ void comparaison(Joueurs* j, int nbjoueurs) {
  * @param[in] c Le tableau des mots
  * @param[in] nb Le nombre de mots
  */
- void triAlpha(Item*& c, const int nb) {
+void triAlpha(Item*& c, const int nb) {
 
-	 //char* tmp;
-	 Mot tmp;
-	 for (int i = 0; i < nb; i++) {
-		 //tmp = new char[30];
+	//char* tmp;
+	Mot tmp;
+	for (int i = 0; i < nb; i++) {
+		//tmp = new char[30];
 
-		 for (int j = 0; j < nb - i - 1; j++) {
-			 if (strcmp(c[j], c[j + 1]) < 0) {
+		for (int j = 0; j < nb - i - 1; j++) {
+			if (strcmp(c[j], c[j + 1]) < 0) {
 
-			 }
-			 else if (strcmp(c[j], c[j + 1]) > 0)
-			 {
-				 strcpy(tmp, c[j]);
-				 strcpy(c[j], c[j + 1]);
-				 strcpy(c[j + 1], tmp);
-			 }
-			 else if (strcmp(c[j], c[j + 1]) == 0)
-			 {
+			}
+			else if (strcmp(c[j], c[j + 1]) > 0)
+			{
+				strcpy(tmp, c[j]);
+				strcpy(c[j], c[j + 1]);
+				strcpy(c[j + 1], tmp);
+			}
+			else if (strcmp(c[j], c[j + 1]) == 0)
+			{
 
-			 }
-		 }
+			}
+		}
 
-		 //delete[] tmp;
+		//delete[] tmp;
 
-	 }
+	}
 
 
- }
+}
 
 
 
