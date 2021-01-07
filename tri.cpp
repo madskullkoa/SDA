@@ -29,15 +29,26 @@ void triUnique(ConteneurTDE& c, Joueurs& j, Item entree, int cpt, unsigned int& 
 }
 
 
+<<<<<<< HEAD
 bool triUniqueTabMot(Mot entre, Mot* tabMots, int& nb) {
 	for (int i = 0; i < nb; i++) {
 		if (strcmp(entre, tabMots[i]) == 0) {
 			return 0;
 		}
 	}
+=======
+bool triUniqueTabMot(Mot entre, Mot* tabMots, int& nb){
+	for(int i = 0; i<nb;i++ ){
+		if(strcmp(entre, tabMots[i])){
+			//nb--;
+			return 0;
+		}
+	}
+	nb++;
+>>>>>>> parent of 599fe63... 5 terminé
 	return 1;
-}
 
+}
 
 
 /**
@@ -78,7 +89,6 @@ void comparaison(Joueurs* j, int nbjoueurs) {
 					bool Motunique = triUniqueTabMot(j[cpt1].conteneurDesMots.tab[k], mots, hit);
 					if (Motunique == 1) {
 						strcpy(mots[hit], j[cpt1].conteneurDesMots.tab[k]);
-						hit++;
 					}
 
 
@@ -96,8 +106,11 @@ void comparaison(Joueurs* j, int nbjoueurs) {
 
 		}
 	}*/
+<<<<<<< HEAD
 
 	triAlpha(mots, hit);
+=======
+>>>>>>> parent of 599fe63... 5 terminé
 
 	for (int i = 0; i < hit; i++) {
 		cout << mots[i] << endl;
@@ -106,14 +119,13 @@ void comparaison(Joueurs* j, int nbjoueurs) {
 	delete[] mots;
 	delete[] tabIndices;
 }
-
-
 /**
  * @brief Trier la liste de mots par ordre alphabetique
  * @param[in] entre le mot entré.
- * @param[in] c Le tableau des mots
- * @param[in] nb Le nombre de mots
+ * @param[in] c Le conteneur des mots
+ * @param[in] j La structure Joueurs (sert a rien je crois)
  */
+<<<<<<< HEAD
 void triAlpha(Item*& c, const int nb) {
 
 	//char* tmp;
@@ -140,9 +152,38 @@ void triAlpha(Item*& c, const int nb) {
 		//delete[] tmp;
 
 	}
+=======
+void triAlpha(ConteneurTDE& c, Joueurs& jr) {
+
+	//char* tmp;
+	Mot tmp;
+	for (int i = 0; i < jr.nbdemot; i++) {
+		//tmp = new char[30];
+
+		for (int j = 0; j < jr.nbdemot - i - 1; j++) {
+			if (strcmp(c.tab[j], c.tab[j + 1]) < 0) {
+
+			}
+			else if (strcmp(c.tab[j], c.tab[j + 1]) > 0)
+			{
+				strcpy(tmp, c.tab[j]);
+				strcpy(c.tab[j], c.tab[j + 1]);
+				strcpy(c.tab[j + 1], tmp);
+			}
+			else if (strcmp(c.tab[j], c.tab[j + 1]) == 0)
+			{
+>>>>>>> parent of 599fe63... 5 terminé
+
+			}
+		}
+
+<<<<<<< HEAD
+}
+=======
+		//delete[] tmp;
+>>>>>>> parent of 599fe63... 5 terminé
+
+	}
 
 
 }
-
-
-

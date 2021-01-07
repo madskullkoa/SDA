@@ -28,5 +28,5 @@ void comparaison(Joueurs* j, int nbjoueurs);
  * @param[in] c Le conteneur des mots
  * @param[in] j La structure Joueurs (sert a rien je crois)
  */
-void triAlpha(Item*& c, const int nb);
+void triAlpha(ConteneurTDE& c, Joueurs& jr);
 

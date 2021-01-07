@@ -203,7 +203,7 @@ int main() {
 
 
 	for (int i = 0; i < nbjoueurs; i++) {
-		triAlpha(tabj[i].conteneurDesMots.tab, tabj[i].nbdemot);
+		triAlpha(tabj[i].conteneurDesMots, tabj[i]);
 	}
 
 	//affichageDeTousLesMots(tabj, nbjoueurs);
