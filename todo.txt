@@ -1,0 +1,22 @@
+- new et delete pour les structures
+- (facultatif) faire un conteneur pour l'exo 1
+
+====================2====================
+- faire une liste pour stocker les mots triés
+- faire une fonction qui trie les mots DES QU'ILS ONT ETE ENTRES mais pas a la fin : ça evite de les stocker
+
+~~~~~~~~~~~~~~pseudo-code pour le 2~~~~~~~~~~~~~~
+- creer une liste
+	1. la rajouter dans le conteneur Joueur
+	2. l'initialiser
+	3. ...
+- lire un mot
+- faire une boucle qui parcourt la liste
+- si le mot est unique alors "Bool Unique = 1;" sinon il vaudra 0
+- faire une boucle qui trie par ordre alphabetique (avec les codes ASCII c'est facile car 41 (A) > 42 (B)) hier dans mon lit en reflechissant à un algo j'avais pensé a la même chose lol
+
+~~~~~~~~~~~~~~pseudo-code pour le 2~~~~~~~~~~~~~~
+
+
+
+
