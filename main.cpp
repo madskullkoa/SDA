@@ -23,12 +23,12 @@ typedef struct
 typedef struct {
 	bool plateauVof[4][4];
 	char plateauMots[4][4];
-	Coord tabDesCoord[16][8];
+	Coord tabDesCoord[30][8];
 }Plateau;
 
 
 
-void radar(Plateau& plateau, Coord coordDonnee);
+void radar(Plateau& plateau, Coord coordDonnee,int pos);
 bool sousrecherche(Mot mot, int pos, Coord coord, Plateau& plateau);
 
 //Pour calculer le temps d'execution
@@ -64,7 +64,7 @@ void initialiserUnPlateau(Plateau& c) {
 
 
 
-//02/01/2021 19H21
+
 
 /**
  * @brief Affichage de toute les listes
@@ -80,13 +80,13 @@ void affichageDeTousLesMots(Joueurs* j, int hit) {
 	}
 
 	for (int k = 0; k < hit; k++) {
-		cout << "############### joueur " << k + 1 << " ###############" << endl;
+		//cout << "############### joueur " << k + 1 << " ###############" << endl;
 		for (int i = 0; i < j[k].nbdemot; i++) {
 			std::cout << j[k].conteneurDesMots.tab[i] << endl;
 		}
 	}
 
-	std::cout << "*" << endl;
+	std::cout << "*";
 }
 
 /**
@@ -171,7 +171,7 @@ bool sousrecherche(Mot mot, int pos, Coord coord, Plateau& plateau) {
 	//cout << mot[pos] << "et ses coord sont : x : " << coord.x << " y : " << coord.y << endl;
 
 
-	radar(plateau, coord);
+	radar(plateau, coord,pos);
 	/*for (int a = 0; a < 8; a++) {
 		cout << "radar :" << endl;
 		cout << plateau.tabDesCoord[a].x << endl;
@@ -190,7 +190,7 @@ bool sousrecherche(Mot mot, int pos, Coord coord, Plateau& plateau) {
 
 }
 
-void radar(Plateau& plateau, Coord coordDonnee) {
+void radar(Plateau& plateau, Coord coordDonnee,int pos) {
 
 	/**
 	 * diagonale-haut-gauche = coord.x - 1 , coord.y + 1 -- 0
@@ -204,29 +204,29 @@ void radar(Plateau& plateau, Coord coordDonnee) {
 	 **/
 
 
-	plateau.tabDesCoord[0].x = coordDonnee.x - 1;
-	plateau.tabDesCoord[0].y = coordDonnee.y - 1; //tabDeCoord[0] contient les valeurs de la coord d'en haut a gauche
+	plateau.tabDesCoord[pos][0].x = coordDonnee.x - 1;
+	plateau.tabDesCoord[pos][0].y = coordDonnee.y - 1; //tabDeCoord[0] contient les valeurs de la coord d'en haut a gauche
 
-	plateau.tabDesCoord[1].x = coordDonnee.x + 1;
-	plateau.tabDesCoord[1].y = coordDonnee.y - 1; //tabDeCoord[1] contient les valeurs de la coord d'en haut a droite
+	plateau.tabDesCoord[pos][1].x = coordDonnee.x + 1;
+	plateau.tabDesCoord[pos][1].y = coordDonnee.y - 1; //tabDeCoord[1] contient les valeurs de la coord d'en haut a droite
 
-	plateau.tabDesCoord[2].x = coordDonnee.x - 1;
-	plateau.tabDesCoord[2].y = coordDonnee.y + 1;
+	plateau.tabDesCoord[pos][2].x = coordDonnee.x - 1;
+	plateau.tabDesCoord[pos][2].y = coordDonnee.y + 1;
 
-	plateau.tabDesCoord[3].x = coordDonnee.x + 1;
-	plateau.tabDesCoord[3].y = coordDonnee.y + 1;
+	plateau.tabDesCoord[pos][3].x = coordDonnee.x + 1;
+	plateau.tabDesCoord[pos][3].y = coordDonnee.y + 1;
 
-	plateau.tabDesCoord[4].x = coordDonnee.x;
-	plateau.tabDesCoord[4].y = coordDonnee.y - 1;
+	plateau.tabDesCoord[pos][4].x = coordDonnee.x;
+	plateau.tabDesCoord[pos][4].y = coordDonnee.y - 1;
 
-	plateau.tabDesCoord[5].x = coordDonnee.x;
-	plateau.tabDesCoord[5].y = coordDonnee.y + 1;
+	plateau.tabDesCoord[pos][5].x = coordDonnee.x;
+	plateau.tabDesCoord[pos][5].y = coordDonnee.y + 1;
 
-	plateau.tabDesCoord[6].y = coordDonnee.y;
-	plateau.tabDesCoord[6].x = coordDonnee.x + 1;
+	plateau.tabDesCoord[pos][6].y = coordDonnee.y;
+	plateau.tabDesCoord[pos][6].x = coordDonnee.x + 1;
 
-	plateau.tabDesCoord[7].y = coordDonnee.y;
-	plateau.tabDesCoord[7].x = coordDonnee.x - 1;
+	plateau.tabDesCoord[pos][7].y = coordDonnee.y;
+	plateau.tabDesCoord[pos][7].x = coordDonnee.x - 1;
 }
 
 int main() {
@@ -322,9 +322,9 @@ int main() {
 
 
 
-	std::cout << "*" << endl;
+	/*std::cout << "*" << endl;
 	time2 = getTime();
 	cout << "Temps d'exécution du quickSort : " << time2 - time1
 		<< " s." << endl;
-
+		*/
 }
