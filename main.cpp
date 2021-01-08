@@ -14,14 +14,55 @@
 #include "points.h"
 #include "tri.h"
 using namespace std;
+typedef struct
+{
+	int x;
+	int y;
+}Coord;
+
+typedef struct {
+	bool plateauVof[4][4];
+	char plateauMots[4][4];
+	Coord tabDesCoord[8];
+}Plateau;
+
+
+
+void radar(Plateau& plateau, Coord coordDonnee);
+bool sousrecherche(Mot mot, int pos, Coord coord, Plateau& plateau);
+
 //Pour calculer le temps d'execution
 double getTime() {
- 	clock_t t = clock();
+	clock_t t = clock();
 	if (t == (clock_t)-1)
 		return 0.;
 	else
 		return (double)t / CLOCKS_PER_SEC;
 }
+
+
+void initialiserUnPlateau(Plateau& c) {
+	Item entre;
+	int indice;
+	for (int k = 0; k < 4; ++k) { // [i][]
+		cin >> entre;
+		cout << "[";
+		for (int i = 0; i < 4; i++) {  // [i][k]
+			cout << "[";
+			c.plateauVof[i][k] = false;
+
+			c.plateauMots[i][k] = entre[i];
+			cout << " " << c.plateauMots[i][k] << " ";
+			cout << "]";
+		}
+		cout << "]" << endl;
+	}
+}
+
+
+
+
+
 
 //02/01/2021 19H21
 
@@ -87,9 +128,113 @@ void ajouterJoueurs(TabJoueurs& tabj, unsigned int& nbjoueurs) {
 	nbjoueurs++;
 }
 
+
+bool recherche(Mot mot, Coord coord, Plateau& plateau) {
+	//marque toutes les cases du plateau comme non visitées
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			plateau.plateauVof[i][j] = false;
+		}
+	}
+
+	//pour toute coordonnée coord de la grille
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			coord.x = i;
+			coord.y = j;
+			if (sousrecherche(mot, 0, coord, plateau)) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+bool sousrecherche(Mot mot, int pos, Coord coord, Plateau& plateau) {
+	if (pos >= strlen(mot))
+		return true;
+	if (coord.x > 4 || coord.y > 4 || coord.x < 0 || coord.y < 0)
+		return false;
+	if (plateau.plateauMots[coord.x][coord.y] != mot[pos])
+		return false;
+	if (plateau.plateauVof[coord.x][coord.y] == true)
+		return false;
+
+	//marquer cette case comme visitée
+	plateau.plateauVof[coord.x][coord.y] = true;
+
+
+	radar(plateau, coord);
+	for (int i = 0; i < 8; i++) {
+		Coord coord2 = plateau.tabDesCoord[i];
+		if (sousrecherche(mot, pos + 1, coord2, plateau))
+		{
+			return true;
+		}
+	}
+	plateau.plateauVof[coord.x][coord.y] = false;
+	return false;
+
+}
+
+void radar(Plateau& plateau, Coord coordDonnee) {
+
+	/**
+	 * diagonale-haut-gauche = coord.x - 1 , coord.y + 1 -- 0
+	 * diagonale-haut-droite = coord.x + 1 , coord.y + 1 -- 1
+	 * diagonale-bas-gauche = coord.x - 1 , coord.y - 1 -- 2
+	 * diagonale-bas-droite = coord.x + 1 , coord.y - 1 -- 3
+	 * haut = coord.y + 1 -- 4
+	 * bas = coord.y - 1 -- 5
+	 * droite = coord.x + 1 -- 6
+	 * gauche = coord.y - 1 -- 7
+	 **/
+
+
+	plateau.tabDesCoord[0].x = coordDonnee.x - 1;
+	plateau.tabDesCoord[0].y = coordDonnee.y - 1; //tabDeCoord[0] contient les valeurs de la coord d'en haut a gauche
+
+	plateau.tabDesCoord[1].x = coordDonnee.x + 1;
+	plateau.tabDesCoord[1].y = coordDonnee.y - 1; //tabDeCoord[1] contient les valeurs de la coord d'en haut a droite
+
+	plateau.tabDesCoord[2].x = coordDonnee.x - 1;
+	plateau.tabDesCoord[2].y = coordDonnee.y + 1;
+
+	plateau.tabDesCoord[3].x = coordDonnee.x + 1;
+	plateau.tabDesCoord[3].y = coordDonnee.y + 1;
+
+	plateau.tabDesCoord[4].x = coordDonnee.x;
+	plateau.tabDesCoord[4].y = coordDonnee.y - 1;
+
+	plateau.tabDesCoord[5].x = coordDonnee.x;
+	plateau.tabDesCoord[5].y = coordDonnee.y + 1;
+
+	plateau.tabDesCoord[6].y = coordDonnee.y;
+	plateau.tabDesCoord[6].x = coordDonnee.x + 1;
+
+	plateau.tabDesCoord[7].y = coordDonnee.y;
+	plateau.tabDesCoord[7].x = coordDonnee.x - 1;
+}
+
 int main() {
-  double time1, time2;
-  time1 = getTime();
+	double time1, time2;
+	time1 = getTime();
+
+
+	Plateau plateau;
+
+	Coord coord;
+	coord.x = 0;
+	coord.y = 0;
+	Coord coord2;
+	coord2.x = 0;
+	coord2.y = 0;
+
+
+
+	//CLUE OBIG MENT ASAE
+
+
 	Item entree; // de deux cases
 	//Joueurs* j;
 	unsigned int etoilesdaffilees = 0;
@@ -105,7 +250,8 @@ int main() {
 	initialisationDesJoueurs(tabj, nbjoueurs);
 	initialisation(tabj[nbjoueurs]);
 	initialiser(tabj[nbjoueurs].conteneurDesMots, 10, 2);
-	do {
+	initialiserUnPlateau(plateau);
+	/*do {
 		cin >> entree;
 		tabj[nbjoueurs].nbdemot++;
 		if ((strcmp(entree, "*") == 0)) {
@@ -133,7 +279,30 @@ int main() {
 
 		cpt++;
 
-	} while (true);
+	} while (true);*/
+
+	std::cin >> entree;
+
+	bool res = recherche(entree, coord, plateau);
+
+	cout << res;
+
+	if (res == true) {
+		cout << entree;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -141,14 +310,15 @@ int main() {
 
 
 
-	for (int i = 0; i < nbjoueurs; i++) {
+	/*for (int i = 0; i < nbjoueurs; i++) {
 		triAlpha(tabj[i].conteneurDesMots.tab, tabj[i].nbdemot);
 	}
 
 	//affichageDeTousLesMots(tabj, nbjoueurs);
 	comparaison(tabj, nbjoueurs);
 	std::cout << "*" << endl;
-  time2 = getTime();
-  cout << "Temps d'exécution du quickSort : " << time2 - time1 
-	     << " s." << endl;
+	time2 = getTime();
+	cout << "Temps d'exécution du quickSort : " << time2 - time1
+		<< " s." << endl;*/
+
 }
