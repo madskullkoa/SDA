@@ -242,7 +242,7 @@ int main() {
 	coord2.x = 0;
 	coord2.y = 0;
 
-
+	bool tabBool[200]; //Tableau de boolean avec res (1d)
 
 	//CLUE OBIG MENT ASAE
 
@@ -299,15 +299,30 @@ int main() {
 
 
 
-	/*for (int i = 0; i < nbjoueurs; i++) {
+	for (int i = 0; i < nbjoueurs; i++) {
 		triAlpha(tabj[i].conteneurDesMots.tab, tabj[i].nbdemot);
 	}
 
 	//affichageDeTousLesMots(tabj, nbjoueurs);
-	comparaison(tabj, nbjoueurs);
+	comparaison(tabj, nbjoueurs); //je sais pas si c'est inutile ou pas
+
+	for(int i = 0; i<tabj[0].nbdemot; i++){
+		bool res = recherche(tabj[0].conteneurDesMots.tab[i],  coord, plateau);
+		tabBool[i] = res; //  
+	}
+	
+
+	for(int i = 0; i < sizeof(tabBool); i++){
+		if(tabBool[i] == true){   
+			cout << tabj[0].conteneurDesMots.tab[i];
+		}
+	}
+
+
+
 	std::cout << "*" << endl;
 	time2 = getTime();
 	cout << "Temps d'exécution du quickSort : " << time2 - time1
-		<< " s." << endl;*/
+		<< " s." << endl;
 
 }
