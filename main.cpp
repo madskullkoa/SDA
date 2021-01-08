@@ -263,7 +263,7 @@ int main() {
 	initialisation(tabj[nbjoueurs]);
 	initialiser(tabj[nbjoueurs].conteneurDesMots, 10, 2);
 	initialiserUnPlateau(plateau);
-	/*do {
+	do {
 		cin >> entree;
 		tabj[nbjoueurs].nbdemot++;
 		if ((strcmp(entree, "*") == 0)) {
@@ -291,30 +291,7 @@ int main() {
 
 		cpt++;
 
-	} while (true);*/
-
-	std::cin >> entree;
-
-	bool res = recherche(entree, coord, plateau);
-
-	
-
-	if (res == true) {
-		cout << entree;
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
+	} while (true);
 
 
 
