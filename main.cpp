@@ -23,7 +23,7 @@ typedef struct
 typedef struct {
 	bool plateauVof[4][4];
 	char plateauMots[4][4];
-	Coord tabDesCoord[8];
+	Coord tabDesCoord[16][8];
 }Plateau;
 
 
@@ -166,8 +166,8 @@ bool sousrecherche(Mot mot, int pos, Coord coord, Plateau& plateau) {
 
 	//marquer cette case comme visitée
 	plateau.plateauVof[coord.x][coord.y] = true;
-	
-	
+
+
 	//cout << mot[pos] << "et ses coord sont : x : " << coord.x << " y : " << coord.y << endl;
 
 
@@ -176,9 +176,10 @@ bool sousrecherche(Mot mot, int pos, Coord coord, Plateau& plateau) {
 		cout << "radar :" << endl;
 		cout << plateau.tabDesCoord[a].x << endl;
 		cout << plateau.tabDesCoord[a].y << endl;
+		palteau.plateauMots[0][0].tabDesCoord[]
 	}*/
 	for (int i = 0; i < 8; i++) {
-		Coord coord2 = plateau.tabDesCoord[i];
+		Coord coord2 = plateau.tabDesCoord[pos][i];
 		if (sousrecherche(mot, pos + 1, coord2, plateau))
 		{
 			return true;
@@ -265,32 +266,33 @@ int main() {
 	initialiserUnPlateau(plateau);
 	do {
 		cin >> entree;
-		tabj[nbjoueurs].nbdemot++;
-		if ((strcmp(entree, "*") == 0)) {
+		if (recherche(entree, coord, plateau) == 1 || (strcmp(entree, "*") == 0)) {
+			tabj[nbjoueurs].nbdemot++;
+			if ((strcmp(entree, "*") == 0)) {
 
-			etoile++;
-			etoilesdaffilees++;
+				etoile++;
+				etoilesdaffilees++;
 
 
-			tabj[nbjoueurs].nbdemot--;
-			if (etoilesdaffilees == 2) {
-				//on sort
 				tabj[nbjoueurs].nbdemot--;
-				break;
+				if (etoilesdaffilees == 2) {
+					//on sort
+					tabj[nbjoueurs].nbdemot--;
+					break;
+				}
+				ajouterJoueurs(tabj, nbjoueurs);
+
+				cpt = 0;
+				continue;
+
 			}
-			ajouterJoueurs(tabj, nbjoueurs);
+			triUnique(tabj[nbjoueurs].conteneurDesMots, tabj[nbjoueurs], entree, tabj[nbjoueurs].nbdemot, etoilesdaffilees);
 
-			cpt = 0;
-			continue;
 
+			//calcul_de_points(tabj[nbjoueurs - 1]);
+
+			cpt++;
 		}
-		triUnique(tabj[nbjoueurs].conteneurDesMots, tabj[nbjoueurs], entree, tabj[nbjoueurs].nbdemot, etoilesdaffilees);
-
-
-		//calcul_de_points(tabj[nbjoueurs - 1]);
-
-		cpt++;
-
 	} while (true);
 
 
@@ -303,20 +305,20 @@ int main() {
 		triAlpha(tabj[i].conteneurDesMots.tab, tabj[i].nbdemot);
 	}
 
-	//affichageDeTousLesMots(tabj, nbjoueurs);
+	affichageDeTousLesMots(tabj, nbjoueurs);
 	//comparaison(tabj, nbjoueurs); //je sais pas si c'est inutile ou pas
 
-	for(int i = 0; i<tabj[0].nbdemot; i++){
-		bool res = recherche(tabj[0].conteneurDesMots.tab[i],  coord, plateau);
+	for (int i = 0; i < tabj[0].nbdemot; i++) {
+		bool res = recherche(tabj[0].conteneurDesMots.tab[i], coord, plateau);
 		tabBool[i] = res; //  
 	}
-	
 
-	for(int i = 0; i < sizeof(tabBool); i++){
-		if(tabBool[i] == true){   
+
+	/*for (int i = 0; i < sizeof(tabBool); i++) {
+		if (tabBool[i] == true) {
 			cout << tabj[0].conteneurDesMots.tab[i] << endl;
 		}
-	}
+	}*/
 
 
 
