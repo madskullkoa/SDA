@@ -151,20 +151,32 @@ bool recherche(Mot mot, Coord coord, Plateau& plateau) {
 }
 
 bool sousrecherche(Mot mot, int pos, Coord coord, Plateau& plateau) {
+
 	if (pos >= strlen(mot))
 		return true;
-	if (coord.x > 4 || coord.y > 4 || coord.x < 0 || coord.y < 0)
+	if (coord.x >= 4 || coord.y >= 4 || coord.x < 0 || coord.y < 0) {
 		return false;
+	}
+
 	if (plateau.plateauMots[coord.x][coord.y] != mot[pos])
 		return false;
 	if (plateau.plateauVof[coord.x][coord.y] == true)
 		return false;
 
+
 	//marquer cette case comme visitée
 	plateau.plateauVof[coord.x][coord.y] = true;
+	
+	
+	//cout << mot[pos] << "et ses coord sont : x : " << coord.x << " y : " << coord.y << endl;
 
 
 	radar(plateau, coord);
+	/*for (int a = 0; a < 8; a++) {
+		cout << "radar :" << endl;
+		cout << plateau.tabDesCoord[a].x << endl;
+		cout << plateau.tabDesCoord[a].y << endl;
+	}*/
 	for (int i = 0; i < 8; i++) {
 		Coord coord2 = plateau.tabDesCoord[i];
 		if (sousrecherche(mot, pos + 1, coord2, plateau))
@@ -285,7 +297,7 @@ int main() {
 
 	bool res = recherche(entree, coord, plateau);
 
-	cout << res;
+	
 
 	if (res == true) {
 		cout << entree;
