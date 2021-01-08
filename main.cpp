@@ -46,16 +46,16 @@ void initialiserUnPlateau(Plateau& c) {
 	int indice;
 	for (int k = 0; k < 4; ++k) { // [i][]
 		cin >> entre;
-		cout << "[";
+		//cout << "[";
 		for (int i = 0; i < 4; i++) {  // [i][k]
-			cout << "[";
+			//cout << "[";
 			c.plateauVof[i][k] = false;
 
 			c.plateauMots[i][k] = entre[i];
-			cout << " " << c.plateauMots[i][k] << " ";
-			cout << "]";
+			//cout << " " << c.plateauMots[i][k] << " ";
+			//cout << "]";
 		}
-		cout << "]" << endl;
+		//cout << "]" << endl;
 	}
 }
 
@@ -304,7 +304,7 @@ int main() {
 	}
 
 	//affichageDeTousLesMots(tabj, nbjoueurs);
-	comparaison(tabj, nbjoueurs); //je sais pas si c'est inutile ou pas
+	//comparaison(tabj, nbjoueurs); //je sais pas si c'est inutile ou pas
 
 	for(int i = 0; i<tabj[0].nbdemot; i++){
 		bool res = recherche(tabj[0].conteneurDesMots.tab[i],  coord, plateau);
@@ -314,7 +314,7 @@ int main() {
 
 	for(int i = 0; i < sizeof(tabBool); i++){
 		if(tabBool[i] == true){   
-			cout << tabj[0].conteneurDesMots.tab[i];
+			cout << tabj[0].conteneurDesMots.tab[i] << endl;
 		}
 	}
 
